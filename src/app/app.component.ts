@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ru-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  constructor(private translate: TranslateService) {}
+
+  ngOnInit() {
+    this.translate.setTranslation('en', require('./../assets/i18n/en.json'));
+    this.translate.setTranslation('bg', require('./../assets/i18n/bg.json'));
+    this.translate.defaultLang = 'bg';
+  }
 }

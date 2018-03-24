@@ -1,0 +1,26 @@
+:host {
+  width: 280px;
+  display: block;
+}
+
+nav > header {
+  background-color: darkgrey;
+  padding: 16px;
+}
+
+nav > header > img {
+  margin: 0 auto;
+  display: block;
+}
+
+mat-nav-list {
+  padding-top: 0;
+}
+
+a[mat-list-item] mat-icon {
+  margin-right: 16px;
+}
+
+a[mat-list-item].active {
+  font-weight: bold;
+}

@@ -1,0 +1,77 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1 translate>Upcoming Exams</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-table #table [dataSource]="upcomingExams">
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef translate>Date</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.date.toLocaleDateString() }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="subject">
+        <mat-header-cell *matHeaderCellDef translate>Subject</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.subject }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="duration">
+        <mat-header-cell *matHeaderCellDef translate>Duration</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.duration }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="professor">
+        <mat-header-cell *matHeaderCellDef translate>Professor</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.professor }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-button color="warn">
+            <span translate>Cancel</span>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="upcomingExamsColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: upcomingExamsColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button color="primary">
+      <span translate>View All</span>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1 translate>Previous Exams</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-table #table [dataSource]="pastExams">
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef translate>Date</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.date.toLocaleDateString() }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="subject">
+        <mat-header-cell *matHeaderCellDef translate>Subject</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.subject }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="professor">
+        <mat-header-cell *matHeaderCellDef translate>Professor</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.professor }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="pastExamsColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: pastExamsColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button color="primary">
+      <span translate>View All</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

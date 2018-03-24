@@ -1,0 +1,28 @@
+<nav>
+  <header>
+    <img src="./assets/ru-logo.png" alt="{{ 'RU Angel Kanchev' | translate }}">
+  </header>
+  <mat-nav-list>
+    <a mat-list-item [routerLink]="'/'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:
+      true}">
+      <mat-icon>dashboard</mat-icon>
+      <span translate>Dashboard</span>
+    </a>
+    <a mat-list-item [routerLink]="'/exam-dates'" [routerLinkActive]="'active'">
+      <mat-icon>event_note</mat-icon>
+      <span translate>Exam Dates</span>
+    </a>
+    <a mat-list-item href="#">
+      <mat-icon>archive</mat-icon>
+      <span translate>Archive</span>
+    </a>
+    <a mat-list-item href="#">
+      <mat-icon>help</mat-icon>
+      <span translate>Help</span>
+    </a>
+    <a mat-list-item href="#">
+      <mat-icon>exit_to_app</mat-icon>
+      <span translate>Logout</span>
+    </a>
+  </mat-nav-list>
+</nav>

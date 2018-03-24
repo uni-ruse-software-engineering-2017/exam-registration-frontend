@@ -1,0 +1,20 @@
+mat-drawer-content {
+  height: 100vh;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+mat-toolbar h1 {
+  flex: 1;
+}
+
+@media only screen and (max-width: 720px) {
+  mat-toolbar h1 {
+    /* display: none; */
+    font-size: 0;
+  }
+}
