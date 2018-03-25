@@ -6,21 +6,13 @@ import { MaterialComponentsModule } from './material-components/material-compone
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
 import { AppComponent } from './app.component';
-import { MissingTranslationHandler } from '@ngx-translate/core';
-import { GetKeyWhenMissingTranslation } from './core/gey-key-when-missing-translation';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    TranslateModule.forRoot({
-      missingTranslationHandler: {
-        provide: MissingTranslationHandler,
-        useClass: GetKeyWhenMissingTranslation
-      }
-    }),
+    TranslateModule.forRoot(),
     BrowserAnimationsModule,
     MaterialComponentsModule,
     AppShellModule,
