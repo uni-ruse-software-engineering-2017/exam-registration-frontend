@@ -141,6 +141,7 @@
     "directive-class-suffix": true
   },
   "extends": [
+    "tslint:recommended",
     "tslint-config-prettier"
   ]
 }

@@ -1,0 +1,45 @@
+.login-card {
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+}
+
+form > mat-form-field {
+  display: block;
+}
+
+.login-card-image {
+  padding: 32px 16px;
+  background: #e8e8e8;
+  background: linear-gradient(to bottom, #e8e8e8 0%, #c9c9c9 100%);
+  display: flex;
+  align-items: center;
+}
+
+.login-card-image > img {
+  height: auto;
+}
+
+.login-card-content {
+  padding: 16px 32px;
+  flex: 1;
+}
+
+.login-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-card-actions > * {
+  margin-left: 16px;
+}
+
+@media only screen and (max-width: 480px) {
+  .login-card {
+    display: block;
+  }
+
+  .login-card-image > img {
+    margin: 0 auto;
+  }
+}

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { StudentRoutingModule } from './student-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { StudentExamDatesComponent } from './student-exam-dates/student-exam-dates.component';
-import { SharedModule } from '../shared/shared.module';
+import { StudentRoutingModule } from './student-routing.module';
 
 @NgModule({
   imports: [SharedModule, StudentRoutingModule],

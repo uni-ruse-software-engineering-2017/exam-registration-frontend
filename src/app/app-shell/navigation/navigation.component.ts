@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../core/authentication.service';
 
 @Component({
   selector: 'ru-navigation',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  constructor(private router: Router, private auth: AuthenticationService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  logout() {
+    this.auth.logout().subscribe(() => {
+      this.router.navigate(['login']);
+    });
   }
-
 }

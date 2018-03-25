@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LoggedInGuard } from './core/logged-in.guard';
 
-const routes: Routes = [{ path: '', loadChildren: './student/student.module#StudentModule' }];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: './student/student.module#StudentModule',
+    canActivate: [LoggedInGuard]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

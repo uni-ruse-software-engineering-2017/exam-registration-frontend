@@ -1,9 +1,9 @@
 <mat-drawer-container>
-  <mat-drawer #drawer [mode]="getDrawerMode()" [opened]="!isMobile()" class="mat-elevation-z8">
+  <mat-drawer #drawer [mode]="getDrawerMode()" [opened]="(shouldRenderDrawer() | async)" class="mat-elevation-z8">
     <ru-navigation></ru-navigation>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar class="mat-elevation-z4">
+    <mat-toolbar class="mat-elevation-z4" [ngClass]="{ 'hidden': (shouldHideToolbar() | async) }">
       <button mat-icon-button (click)="drawer.toggle()" *ngIf="isMobile()">
         <mat-icon>menu</mat-icon>
       </button>
@@ -16,6 +16,10 @@
         <button mat-menu-item (click)="setLanguage('en')" translate>English</button>
       </mat-menu>
     </mat-toolbar>
-    <ru-content></ru-content>
+    <section class="content" [ngClass]="{ 'no-session': (shouldHideToolbar() | async) }">
+      <div class="route-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
   </mat-drawer-content>
 </mat-drawer-container>

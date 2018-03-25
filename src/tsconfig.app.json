@@ -9,7 +9,8 @@
     ],
     "types": [
       "node"
-    ]
+    ],
+    "experimentalDecorators": true
   },
   "exclude": [
     "test.ts",

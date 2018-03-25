@@ -6,6 +6,13 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 3;
+  transition: 0.33s ease-in-out;
+  will-change: transform;
+  transform: translateY(0);
+}
+
+mat-toolbar.hidden {
+  transform: translateY(-64px);
 }
 
 mat-toolbar h1 {
@@ -14,7 +21,21 @@ mat-toolbar h1 {
 
 @media only screen and (max-width: 720px) {
   mat-toolbar h1 {
-    /* display: none; */
     font-size: 0;
   }
+}
+
+section.content {
+  display: block;
+  padding: 16px;
+}
+
+section.content.no-session {
+  display: flex;
+  align-items: center;
+  height: calc(100% - 128px);
+}
+
+section.content.no-session > div {
+  margin: 0 auto;
 }

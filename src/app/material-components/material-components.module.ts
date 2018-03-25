@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule,
   MatAutocompleteModule,
+  MatButtonModule,
   MatButtonToggleModule,
-  MatInputModule,
-  MatSidenavModule,
-  MatToolbarModule,
+  MatCardModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatCardModule,
+  MatNavList,
+  MatSidenavModule,
   MatTableModule,
-  MatNavList
+  MatToolbarModule
 } from '@angular/material';
 
 const materialModules = [
