@@ -15,3 +15,6 @@ cache:
 
 script:
   - npm run ci
+
+notifications:
+  slack: uni-ruse-masters:b0uEelST36eN8mkTXREAHeY0
