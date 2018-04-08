@@ -1,6 +1,18 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+/**
+ * Chrome Headless - used local development
+ * Chrome Headless (No Sandboxing) - used in TravisCI
+ */
+const getBrowsers = () => {
+  if (process.env.TRAVIS === 'true') {
+    return ['ChromeHeadlessNoSandbox'];
+  } else {
+    return ['ChromeHeadless'];
+  }
+};
+
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -27,11 +39,12 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+    browsers: getBrowsers(),
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox'],
+        displayName: 'Chrome Headless (No Sandbox)'
       }
     },
     singleRun: false
