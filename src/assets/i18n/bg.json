@@ -9,6 +9,7 @@
 	"English": "Английски",
 	"Exam Dates": "Дати за изпит",
 	"Help": "Помощ",
+	"Invalid email address": "Невалиден имейл адрес.",
 	"Log in": "Влез",
 	"Login": "Вход в системата",
 	"Logout": "Изход",
@@ -19,6 +20,8 @@
 	"RU Angel Kanchev": "РУ \"Ангел Кънчев\"",
 	"Sign Up": "Регистрация",
 	"Subject": "Дисциплина",
+	"The email address is a required field": "Имейл адресът е задължително поле.",
+	"The password is a required field": "Паролата е задължително поле",
 	"Upcoming Exams": "Предстоящи изпити",
 	"View All": "Виж всички"
 }

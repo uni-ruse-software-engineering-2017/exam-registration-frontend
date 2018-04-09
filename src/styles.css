@@ -43,3 +43,14 @@ img {
 [mat-button] {
   text-transform: uppercase;
 }
+
+/** Display only the first error when there are multiple errors **/
+mat-error {
+  margin-bottom: 8px;
+}
+mat-error.mat-error {
+  display: none;
+}
+mat-error.mat-error:first-of-type {
+  display: block;
+}

@@ -8,6 +8,7 @@
     "build": "ng build --aot --environment=prod --target=production --build-optimizer --named-chunks",
     "test": "ng test",
     "lint": "ng lint",
+    "lint-fix": "ng lint --fix",
     "e2e": "ng e2e",
     "ci": "npm run lint && ng test --single-run && npm run build",
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/{en,bg}.json --clean --sort --format namespaced-json"

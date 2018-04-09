@@ -9,6 +9,7 @@
 	"English": "English",
 	"Exam Dates": "Exam Dates",
 	"Help": "Help",
+	"Invalid email address": "Invalid email address",
 	"Log in": "Log in",
 	"Login": "Login",
 	"Logout": "Logout",
@@ -19,6 +20,8 @@
 	"RU Angel Kanchev": "RU Angel Kanchev",
 	"Sign Up": "Sign Up",
 	"Subject": "Subject",
+	"The email address is a required field": "The email address is a required field",
+	"The password is a required field": "The password is a required field",
 	"Upcoming Exams": "Upcoming Exams",
 	"View All": "View All"
 }
