@@ -6,8 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppShellModule } from './app-shell/app-shell.module';
 import { AppComponent } from './app.component';
-import { MaterialComponentsModule } from './material-components/material-components.module';
 import { PublicModule } from './public/public.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +15,7 @@ import { PublicModule } from './public/public.module';
     BrowserModule,
     TranslateModule.forRoot(),
     BrowserAnimationsModule,
-    MaterialComponentsModule,
+    SharedModule,
     AppShellModule,
     PublicModule,
     AppRoutingModule,

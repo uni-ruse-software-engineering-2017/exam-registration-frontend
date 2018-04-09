@@ -1,46 +1,39 @@
-<div class="login-card mat-elevation-z4">
-  <div class="login-card-image">
-    <img src="./assets/ru-logo.png" alt="{{ 'RU Angel Kanchev' | translate }}">
-  </div>
-  <div class="login-card-content">
-    <header class="login-card-header">
-      <h1 class="mat-headline" translate>Online Exam Registration System</h1>
-      <h2 class="mat-title" translate>Login</h2>
-    </header>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field>
-        <input
-          type="email"
-          matInput
-          placeholder="{{ 'Email Address' | translate }}"
-          formControlName="emailAddress"
-          required>
-        <mat-error *ngIf="loginForm.controls['emailAddress'].errors?.required" translate>
-          The email address is a required field
-        </mat-error>
-        <mat-error *ngIf="loginForm.controls['emailAddress'].errors?.email" translate>
-          Invalid email address
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          type="password"
-          matInput
-          placeholder="{{ 'Password' | translate }}"
-          formControlName="password"
-          required>
-        <mat-error *ngIf="loginForm.controls['password'].errors?.required" translate>
-          The password is a required field
-        </mat-error>
-      </mat-form-field>
-      <div class="login-card-actions">
-        <button mat-button color="primary">
-          <span translate>Log in</span>
-        </button>
-        <a [routerLink]="'/sign-up'" mat-button type="button">
-          <span translate>Sign Up</span>
-        </a>
-      </div>
-    </form>
-  </div>
-</div>
+<ru-hero-card
+  title="{{ 'Online Exam Registration System' | translate }}"
+  subtitle="{{ 'Login' | translate }}">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="{{ 'Email Address' | translate }}"
+        formControlName="emailAddress"
+        required>
+      <mat-error *ngIf="loginForm.controls['emailAddress'].errors?.required" translate>
+        The email address is a required field
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['emailAddress'].errors?.email" translate>
+        Invalid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="{{ 'Password' | translate }}"
+        formControlName="password"
+        required>
+      <mat-error *ngIf="loginForm.controls['password'].errors?.required" translate>
+        The password is a required field
+      </mat-error>
+    </mat-form-field>
+    <div class="hero-card-actions">
+      <button mat-button color="primary">
+        <span translate>Log in</span>
+      </button>
+      <a [routerLink]="'/sign-up'" mat-button type="button">
+        <span translate>Sign Up</span>
+      </a>
+    </div>
+  </form>
+</ru-hero-card>

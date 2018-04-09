@@ -1,0 +1,28 @@
+<ru-hero-card
+  title="{{ 'Online Exam Registration System' | translate }}"
+  subtitle="{{ 'Sign Up' | translate }}">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="{{ 'Email Address' | translate }}"
+        formControlName="emailAddress"
+        required>
+      <mat-error *ngIf="signUpForm.controls['emailAddress'].errors?.required" translate>
+        The email address is a required field
+      </mat-error>
+      <mat-error *ngIf="signUpForm.controls['emailAddress'].errors?.email" translate>
+        Invalid email address
+      </mat-error>
+    </mat-form-field>
+    <div class="hero-card-actions">
+      <button mat-button color="primary">
+        <span translate>Sign-up</span>
+      </button>
+      <a [routerLink]="'/login'" mat-button type="button">
+        <span translate>Back</span>
+      </a>
+    </div>
+  </form>
+</ru-hero-card>

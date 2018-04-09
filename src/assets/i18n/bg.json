@@ -1,5 +1,6 @@
 {
 	"Archive": "Архив",
+	"Back": "Назад",
 	"Bulgarian": "Български",
 	"Cancel": "Отказ",
 	"Dashboard": "Начало",
@@ -19,6 +20,7 @@
 	"Professor": "Преподавател",
 	"RU Angel Kanchev": "РУ \"Ангел Кънчев\"",
 	"Sign Up": "Регистрация",
+	"Sign-up": "Регистрирай се",
 	"Subject": "Дисциплина",
 	"The email address is a required field": "Имейл адресът е задължително поле.",
 	"The password is a required field": "Паролата е задължително поле",

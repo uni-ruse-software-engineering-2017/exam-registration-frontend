@@ -28,6 +28,11 @@ const materialModules = [
   MatIconModule
 ];
 
+/**
+ * This module imports all of the material components which will
+ * be used in the application. Importing and exporting them explicitly
+ * allows us to have a smaller bundle size.
+ */
 @NgModule({
   imports: materialModules,
   exports: materialModules

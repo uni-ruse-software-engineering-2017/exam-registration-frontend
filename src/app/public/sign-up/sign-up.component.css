@@ -1,13 +1,13 @@
-form > mat-form-field {
-  display: block;
-}
-
 .hero-card-actions {
   display: flex;
   justify-content: flex-end;
 }
 
 .hero-card-actions > * {
-  margin-top: 16px;
   margin-left: 16px;
+  margin-top: 16px;
+}
+
+form > mat-form-field {
+  display: block;
 }

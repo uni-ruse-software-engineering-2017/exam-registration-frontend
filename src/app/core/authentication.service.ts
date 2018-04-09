@@ -13,12 +13,20 @@ export class AuthenticationService {
 
   login(user: IApplicationUser): Observable<IApplicationUser> {
     if (!user || !user.username || !user.password) {
-      return _throw('Invalid credentials');
+      return _throw('Invalid credentials!');
     }
 
     this.loggedUser = user;
 
     return of(user);
+  }
+
+  signUp(emailAddress: string) {
+    if (!emailAddress) {
+      return _throw('Email address must be provided!');
+    }
+
+    return of(null);
   }
 
   logout() {
