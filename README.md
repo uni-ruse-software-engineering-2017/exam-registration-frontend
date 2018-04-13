@@ -9,6 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 1.  Git
 2.  [Node.js (LTS)](https://nodejs.org/en/download/)
 3.  [Angular CLI](https://github.com/angular/angular-cli)
+4. Hello from Darkside :D
 
 ## How to install
 
