@@ -90,8 +90,16 @@ export class AuthenticationService {
   logout() {
     clearTimeout(this.jwtDurationTimeout);
 
+    // display a message to the user that their
+    // session has expired
     if (this.jwtUtil.isTokenExpired()) {
-      this.snackbar.open(this.translate.instant('Session expired'));
+      this.snackbar.open(
+        this.translate.instant('Session expired'),
+        this.translate.instant('Dismiss'),
+        {
+          duration: 3500
+        }
+      );
     }
 
     // clear session data
