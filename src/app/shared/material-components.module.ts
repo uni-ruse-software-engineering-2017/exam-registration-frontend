@@ -10,8 +10,10 @@ import {
   MatMenuModule,
   MatNavList,
   MatSidenavModule,
+  MatSnackBarModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 
 const materialModules = [
@@ -25,7 +27,9 @@ const materialModules = [
   MatMenuModule,
   MatCardModule,
   MatTableModule,
-  MatIconModule
+  MatIconModule,
+  MatSnackBarModule,
+  MatTooltipModule
 ];
 
 /**

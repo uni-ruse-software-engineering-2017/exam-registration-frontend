@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/authentication.service';
+import { HttpErrorHandlerService } from '../../core/http-error-handler.service';
 
 interface ILoginModel {
   emailAddress: string;
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(
     private auth: AuthenticationService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private errorHandler: HttpErrorHandlerService
   ) {
     this.loginForm = this.fb.group({
       emailAddress: ['', [Validators.required, Validators.email]],
@@ -39,8 +41,13 @@ export class LoginComponent {
         username: formData.emailAddress,
         password: formData.password
       })
-      .subscribe(user => {
-        this.router.navigate(['']);
-      });
+      .subscribe(
+        token => {
+          this.router.navigate(['']);
+        },
+        error => {
+          this.errorHandler.handle(error);
+        }
+      );
   }
 }
