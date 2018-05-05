@@ -4,11 +4,8 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
-import { map } from 'rxjs/operators/map';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Observable ,  of ,  ReplaySubject ,  throwError as _throw } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import {
   IJwtUserData,

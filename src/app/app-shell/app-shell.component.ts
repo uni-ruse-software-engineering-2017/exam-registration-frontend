@@ -12,8 +12,8 @@ import {
 import { MatDrawer } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IUserProfile } from '../models/authentication-models';
 
 @Component({

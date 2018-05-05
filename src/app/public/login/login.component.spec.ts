@@ -10,8 +10,7 @@ import {
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
+import { of, throwError } from 'rxjs';
 import { AuthenticationService } from '../../core/authentication.service';
 import { HttpErrorHandlerService } from '../../core/http-error-handler.service';
 import { SharedModule } from '../../shared/shared.module';
@@ -45,7 +44,7 @@ const AuthenticationServiceMock = {
       return of('jwt_token');
     }
 
-    return _throw(AUTH_ERROR_RESPONSE);
+    return throwError(AUTH_ERROR_RESPONSE);
   },
 
   reset() {
