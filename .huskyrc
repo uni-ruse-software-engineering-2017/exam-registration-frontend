@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit": "npm run precommit",
+    "post-merge": "npm install"
+  }
+}

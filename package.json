@@ -11,6 +11,7 @@
     "lint-fix": "ng lint --fix",
     "e2e": "ng e2e",
     "ci": "npm run lint && ng test --single-run && npm run build",
+    "precommit": "npm run lint-fix && ng test --single-run",
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/{en,bg}.json --clean --sort --format namespaced-json"
   },
   "private": true,
@@ -41,6 +42,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.103",
     "codelyzer": "^4.0.1",
+    "husky": "^1.0.0-rc.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
