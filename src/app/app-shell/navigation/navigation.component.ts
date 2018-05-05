@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/authentication.service';
 import { IUserProfile } from '../../models/authentication-models';
@@ -9,17 +9,10 @@ import { IUserProfile } from '../../models/authentication-models';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  userDetails: IUserProfile;
-
-  constructor(private router: Router, public auth: AuthenticationService) {
-    this.auth.userProfile$.subscribe(profile => {
-      this.userDetails = profile;
-    });
-  }
+  @Input() userDetails: IUserProfile;
+  @Output() logoutClicked = new EventEmitter();
 
   logout() {
-    this.auth.logout().subscribe(() => {
-      this.router.navigate(['login']);
-    });
+    this.logoutClicked.emit();
   }
 }

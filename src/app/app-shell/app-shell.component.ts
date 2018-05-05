@@ -3,14 +3,18 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
+  EventEmitter,
+  Input,
   OnDestroy,
+  Output,
   ViewChild
 } from '@angular/core';
 import { MatDrawer } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
-import { AuthenticationService } from '../core/authentication.service';
+import { IUserProfile } from '../models/authentication-models';
 
 @Component({
   selector: 'ru-app-shell',
@@ -18,6 +22,8 @@ import { AuthenticationService } from '../core/authentication.service';
   styleUrls: ['./app-shell.component.css']
 })
 export class AppShellComponent implements OnDestroy, AfterViewInit {
+  @Input() userProfile: IUserProfile;
+  @Output() logoutClicked = new EventEmitter();
   @ViewChild('drawer') drawer: MatDrawer;
 
   private mobileQuery: MediaQueryList;
@@ -27,7 +33,6 @@ export class AppShellComponent implements OnDestroy, AfterViewInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private translate: TranslateService,
-    private auth: AuthenticationService,
     private router: Router
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 1024px)');
@@ -63,12 +68,14 @@ export class AppShellComponent implements OnDestroy, AfterViewInit {
   }
 
   shouldRenderDrawer() {
-    return this.shouldHideToolbar().pipe(
-      map(toolbarHidden => !toolbarHidden && !this.isMobile())
-    );
+    return !this.shouldHideToolbar() && !this.isMobile();
   }
 
   shouldHideToolbar() {
-    return this.auth.isUserLogged().pipe(map(x => !x));
+    return !this.userProfile;
+  }
+
+  onLogoutClicked() {
+    this.logoutClicked.emit();
   }
 }

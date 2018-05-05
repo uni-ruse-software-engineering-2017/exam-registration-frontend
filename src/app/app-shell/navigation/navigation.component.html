@@ -2,13 +2,13 @@
   <header>
     <img src="./assets/ru-logo.png" alt="{{ 'RU Angel Kanchev' | translate }}">
     <div class="user-details">
-      <div class="user-details__role" [ngSwitch]="userDetails?.role">
+      <div class="user-details__role" [ngSwitch]="userDetails?.role" *ngIf="userDetails">
         <mat-icon  *ngSwitchCase="'PROFESSOR'" matTooltip="{{ 'Professor' | translate }}">account_circle</mat-icon>
         <mat-icon *ngSwitchCase="'STUDENT'" matTooltip="{{ 'Student' | translate }}">school</mat-icon>
-        <mat-icon *ngSwitchDefault matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
+        <mat-icon *ngSwitchCase="'ADMINISTRATOR'" matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
       </div>
       <div class="user-details__username">
-        <span>{{ userDetails?.username }}</span>
+        {{ userDetails?.username }}
       </div>
     </div>
   </header>

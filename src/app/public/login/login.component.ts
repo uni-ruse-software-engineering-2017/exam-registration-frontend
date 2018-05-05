@@ -31,12 +31,12 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      return;
+      return false;
     }
 
     const formData = Object.assign(this.loginForm.value) as ILoginModel;
 
-    this.auth
+    return this.auth
       .login({
         username: formData.emailAddress,
         password: formData.password

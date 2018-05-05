@@ -1,17 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../../shared/shared.module';
 import { StudentDashboardComponent } from './student-dashboard.component';
 
 describe('StudentDashboardComponent', () => {
   let component: StudentDashboardComponent;
   let fixture: ComponentFixture<StudentDashboardComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ StudentDashboardComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [StudentDashboardComponent],
+        imports: [SharedModule, TranslateModule.forRoot()]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(StudentDashboardComponent);

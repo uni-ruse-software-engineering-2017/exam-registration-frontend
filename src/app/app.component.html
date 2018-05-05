@@ -1,1 +1,4 @@
-<ru-app-shell></ru-app-shell>
+<ru-app-shell
+  [userProfile]="auth.userProfile$ | async"
+  (logoutClicked)="onLogoutClicked()">
+</ru-app-shell>

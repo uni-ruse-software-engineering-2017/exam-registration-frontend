@@ -27,12 +27,12 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.signUpForm.invalid) {
-      return;
+      return false;
     }
 
     const formData = Object.assign(this.signUpForm.value) as ISignUpFormData;
 
-    this.auth.signUp(formData.emailAddress).subscribe(user => {
+    return this.auth.signUp(formData.emailAddress).subscribe(user => {
       this.router.navigate(['']);
     });
   }
