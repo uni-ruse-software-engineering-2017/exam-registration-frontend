@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot --environment=prod --target=production --build-optimizer --named-chunks",
+    "build": "ng build --aot --build-optimizer --named-chunks",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
