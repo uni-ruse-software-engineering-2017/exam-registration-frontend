@@ -14,6 +14,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoadingService } from '../core/loading.service';
 import { IUserProfile } from '../models/authentication-models';
 
 @Component({
@@ -32,6 +33,7 @@ export class AppShellComponent implements OnDestroy, AfterViewInit {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
+    public loading: LoadingService,
     private translate: TranslateService,
     private router: Router
   ) {

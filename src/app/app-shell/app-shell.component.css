@@ -2,7 +2,7 @@ mat-drawer-content {
   height: 100vh;
 }
 
-mat-toolbar {
+.toolbar {
   position: sticky;
   top: 0;
   z-index: 3;
@@ -11,12 +11,16 @@ mat-toolbar {
   transform: translateY(0);
 }
 
-mat-toolbar.hidden {
+.toolbar.hidden {
   transform: translateY(-64px);
 }
 
 mat-toolbar h1 {
   flex: 1;
+}
+
+mat-progress-bar.hidden {
+  visibility: hidden;
 }
 
 @media only screen and (max-width: 720px) {

@@ -3,19 +3,22 @@
     <ru-navigation (logoutClicked)="onLogoutClicked()" [userDetails]="userProfile"></ru-navigation>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar class="mat-elevation-z4" [ngClass]="{ 'hidden': shouldHideToolbar() }">
-      <button mat-icon-button (click)="drawer.toggle()" *ngIf="isMobile()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <h1 translate>Online Exam Registration System</h1>
-      <button mat-icon-button [matMenuTriggerFor]="langsMenu">
-        <mat-icon>translate</mat-icon>
-      </button>
-      <mat-menu #langsMenu>
-        <button mat-menu-item (click)="setLanguage('bg')" translate>Bulgarian</button>
-        <button mat-menu-item (click)="setLanguage('en')" translate>English</button>
-      </mat-menu>
-    </mat-toolbar>
+    <div class="toolbar" [ngClass]="{ 'hidden': shouldHideToolbar() }">
+      <mat-toolbar class="mat-elevation-z4">
+        <button mat-icon-button (click)="drawer.toggle()" *ngIf="isMobile()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1 translate>Online Exam Registration System</h1>
+        <button mat-icon-button [matMenuTriggerFor]="langsMenu">
+          <mat-icon>translate</mat-icon>
+        </button>
+        <mat-menu #langsMenu>
+          <button mat-menu-item (click)="setLanguage('bg')" translate>Bulgarian</button>
+          <button mat-menu-item (click)="setLanguage('en')" translate>English</button>
+        </mat-menu>
+      </mat-toolbar>
+      <mat-progress-bar mode="indeterminate" [ngClass]="{ 'hidden': !loading.isLoading() }"></mat-progress-bar>
+    </div>
     <section class="content" [ngClass]="{ 'no-session': shouldHideToolbar() }">
       <div class="route-wrapper">
         <router-outlet></router-outlet>

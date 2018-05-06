@@ -11,6 +11,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthenticationService } from '../core/authentication.service';
+import { LoadingService } from '../core/loading.service';
 import { IUserProfile } from '../models/authentication-models';
 import { SharedModule } from '../shared/shared.module';
 import { AppShellComponent } from './app-shell.component';
@@ -36,7 +37,8 @@ describe('AppShellComponent', () => {
           LayoutModule,
           RouterTestingModule,
           TranslateModule.forRoot()
-        ]
+        ],
+        providers: [LoadingService]
       }).compileComponents();
     })
   );

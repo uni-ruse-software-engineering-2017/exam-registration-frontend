@@ -9,6 +9,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatNavList,
+  MatProgressBarModule,
   MatSidenavModule,
   MatSnackBarModule,
   MatTableModule,
@@ -29,7 +30,8 @@ const materialModules = [
   MatTableModule,
   MatIconModule,
   MatSnackBarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatProgressBarModule
 ];
 
 /**
