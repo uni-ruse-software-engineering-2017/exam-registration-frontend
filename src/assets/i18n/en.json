@@ -15,6 +15,7 @@
 	"English": "English",
 	"Exam Dates": "Exam Dates",
 	"Help": "Help",
+	"Instructions for account activation were sent to your email address": "Registration was successful. Instructions for account activation were sent to your email address",
 	"Invalid data provided": "Invalid data provided",
 	"Invalid email address": "Invalid email address",
 	"Log in": "Log in",
@@ -22,9 +23,11 @@
 	"Logout": "Logout",
 	"Online Exam Registration System": "Online Exam Registration System",
 	"Password": "Password",
+	"Passwords must match": "Both passwords must match",
 	"Previous Exams": "Previous Exams",
 	"Professor": "Professor",
 	"RU Angel Kanchev": "RU Angel Kanchev",
+	"Repeat Password": "Repeat Password",
 	"Resource not found": "Page or resource not found",
 	"Session expired": "Your session expied. Please login again.",
 	"Sign Up": "Sign Up",
@@ -35,7 +38,11 @@
 	"The password is a required field": "The password is a required field",
 	"Unauthenticated action": "Unauthenticated action",
 	"Upcoming Exams": "Upcoming Exams",
+	"User with that email address already exists": "User with that email address is already registered",
 	"View All": "View All",
 	"You appear to be offline": "You appear to be offline",
-	"You don't have the required permissions": "You don't have the required permissions"
+	"You don't have the required permissions": "You don't have the required permissions",
+	"You must enter a password": "You must enter a password",
+	"You must repeat your password": "You must repeat your password",
+	"Your password is not long enough": "Your password must be at least {{ minlength }} symbols"
 }

@@ -80,8 +80,8 @@ export class AuthenticationService {
     );
   }
 
-  signUp(emailAddress: string) {
-    return of(null);
+  signUp(signUpData: IUserCredentials) {
+    return this.http.post(`${API_URL}/sign-up`, signUpData);
   }
 
   logout() {

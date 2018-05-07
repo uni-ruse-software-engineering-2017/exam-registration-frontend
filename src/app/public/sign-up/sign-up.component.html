@@ -16,6 +16,35 @@
         Invalid email address
       </mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="{{ 'Password' | translate }}"
+        formControlName="password"
+        [minlength]="PASSWORD_MIN_LENGTH"
+        required>
+      <mat-error *ngIf="signUpForm.controls['password'].errors?.required" translate>
+        You must enter a password
+      </mat-error>
+      <mat-error *ngIf="signUpForm.controls['password'].errors?.minlength" translate [translateParams]="{ minlength: PASSWORD_MIN_LENGTH }">
+        Your password is not long enough
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="{{ 'Repeat Password' | translate }}"
+        formControlName="repeatPassword"
+        required>
+      <mat-error *ngIf="signUpForm.controls['repeatPassword'].errors?.required" translate>
+        You must repeat your password
+      </mat-error>
+      <mat-error *ngIf="signUpForm.controls['repeatPassword'].errors?.matchPasswords" translate>
+        Passwords must match
+      </mat-error>
+    </mat-form-field>
     <div class="hero-card-actions">
       <button mat-button color="primary">
         <span translate>Sign-up</span>
