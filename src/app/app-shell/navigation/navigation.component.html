@@ -5,7 +5,7 @@
       <div class="user-details__role" [ngSwitch]="userDetails?.role" *ngIf="userDetails">
         <mat-icon  *ngSwitchCase="'PROFESSOR'" matTooltip="{{ 'Professor' | translate }}">account_circle</mat-icon>
         <mat-icon *ngSwitchCase="'STUDENT'" matTooltip="{{ 'Student' | translate }}">school</mat-icon>
-        <mat-icon *ngSwitchCase="'ADMINISTRATOR'" matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
+        <mat-icon *ngSwitchCase="'ADMIN'" matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
       </div>
       <div class="user-details__username">
         {{ userDetails?.username }}
@@ -13,22 +13,33 @@
     </div>
   </header>
   <mat-nav-list>
-    <a mat-list-item [routerLink]="'/'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:
-      true}">
+    <a mat-list-item [routerLink]="'student'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" *ngIf="isStudent()">
       <mat-icon>dashboard</mat-icon>
       <span translate>Dashboard</span>
     </a>
-    <a mat-list-item [routerLink]="'/exam-dates'" [routerLinkActive]="'active'">
+    <a mat-list-item [routerLink]="'professor'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" *ngIf="isProfessor()">
+      <mat-icon>dashboard</mat-icon>
+      <span translate>Dashboard</span>
+    </a>
+    <a mat-list-item [routerLink]="'student/exam-dates'" [routerLinkActive]="'active'" *ngIf="isStudent()">
       <mat-icon>event_note</mat-icon>
       <span translate>Exam Dates</span>
     </a>
-    <a mat-list-item href="#">
+    <a mat-list-item [routerLink]="'professor/exam-dates'" [routerLinkActive]="'active'" *ngIf="isProfessor()">
+      <mat-icon>event_note</mat-icon>
+      <span translate>Exam Dates</span>
+    </a>
+    <a mat-list-item [routerLink]="'professor/archive'" *ngIf="isProfessor()">
       <mat-icon>archive</mat-icon>
       <span translate>Archive</span>
     </a>
-    <a mat-list-item href="#">
-      <mat-icon>help</mat-icon>
-      <span translate>Help</span>
+    <a mat-list-item [routerLink]="'administration/professors'" *ngIf="isAdmin()">
+      <mat-icon>people</mat-icon>
+      <span translate>Professors Management</span>
+    </a>
+    <a mat-list-item [routerLink]="'administration/subjects'" *ngIf="isAdmin()">
+      <mat-icon>book</mat-icon>
+      <span translate>Subjects Management</span>
     </a>
     <a mat-list-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>

@@ -71,14 +71,16 @@ describe('AuthenticationService', () => {
     '#login should log in a user',
     inject([AuthenticationService], (service: AuthenticationService) => {
       service.login(STUDENT_CREDENTIALS).subscribe(
-        token => {
-          expect(token.length).toBeGreaterThan(0);
+        loginSuccess => {
+          expect(loginSuccess.token.length).toBeGreaterThan(0);
 
           // check if the JWT is saved in localStorage
-          expect(localStorage.getItem(JWT_KEY)).toEqual(token);
+          expect(localStorage.getItem(JWT_KEY)).toEqual(loginSuccess.token);
 
           // check if the JWT is parsed successfully
-          const userDetails = jwtHelper.decodeToken(token) as IJwtUserData;
+          const userDetails = jwtHelper.decodeToken(
+            loginSuccess.token
+          ) as IJwtUserData;
           service.userProfile$.subscribe(userProfile => {
             expect(userProfile.role).toEqual(userDetails.role);
             expect(userProfile.username).toEqual(userDetails.sub);

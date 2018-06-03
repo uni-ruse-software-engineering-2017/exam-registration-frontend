@@ -41,7 +41,7 @@ const AuthenticationServiceMock = {
       credentials.username === FORM_DATA.emailAddress &&
       credentials.password === FORM_DATA.password
     ) {
-      return of('jwt_token');
+      return of({ token: 'jwt_token', profile: { role: 'STUDENT' } });
     }
 
     return throwError(AUTH_ERROR_RESPONSE);
@@ -49,6 +49,10 @@ const AuthenticationServiceMock = {
 
   reset() {
     this.timesCalled = 0;
+  },
+
+  getBaseRouteForUser(role: string) {
+    return role.toLowerCase();
   }
 };
 

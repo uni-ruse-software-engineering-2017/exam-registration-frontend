@@ -15,4 +15,20 @@ export class NavigationComponent {
   logout() {
     this.logoutClicked.emit();
   }
+
+  isUserLoggedIn() {
+    return !!this.userDetails;
+  }
+
+  isStudent() {
+    return this.isUserLoggedIn() && this.userDetails.role === 'STUDENT';
+  }
+
+  isProfessor() {
+    return this.isUserLoggedIn() && this.userDetails.role === 'PROFESSOR';
+  }
+
+  isAdmin() {
+    return this.isUserLoggedIn() && this.userDetails.role === 'ADMIN';
+  }
 }

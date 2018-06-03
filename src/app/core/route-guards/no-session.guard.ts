@@ -6,11 +6,11 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
+import { filter, map } from 'rxjs/operators';
+import { AuthenticationService } from './../authentication.service';
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class NoSessionGuard implements CanActivate {
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -18,13 +18,21 @@ export class LoggedInGuard implements CanActivate {
       map(
         isLoggedIn => {
           if (!isLoggedIn) {
-            this.router.navigate(['login']);
-            return false;
+            return true;
           }
-          return true;
+
+          this.auth.userProfile$
+            .pipe(filter(profile => !!profile))
+            .subscribe(profile =>
+              this.router.navigate([
+                this.auth.getBaseRouteForUser(profile.role)
+              ])
+            );
+
+          return false;
         },
         error => {
-          return of(false);
+          return of(true);
         }
       )
     );

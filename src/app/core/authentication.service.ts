@@ -10,16 +10,23 @@ import { environment } from '../../environments/environment';
 import {
   IJwtUserData,
   IUserCredentials,
-  IUserProfile
+  IUserProfile,
+  UserRole
 } from './../models/authentication-models';
 
 const API_URL = environment.API_URL;
 const JWT_KEY = 'jwt';
 
+interface ILoginSuccessResponse {
+  token: string;
+  profile: IUserProfile;
+}
+
 @Injectable()
 export class AuthenticationService {
   private authToken: string;
   private jwtDurationTimeout: any;
+  private user: IUserProfile;
 
   public userProfile$: ReplaySubject<IUserProfile> = new ReplaySubject();
 
@@ -36,11 +43,8 @@ export class AuthenticationService {
     if (jwt) {
       this.authToken = jwt;
       const jwtPayload = this.parseJwt(jwt);
-      this.userProfile$.next({
-        fullName: jwtPayload.sub,
-        role: jwtPayload.role,
-        username: jwtPayload.sub
-      } as IUserProfile);
+      this.user = this.constructUserProfile(jwtPayload);
+      this.userProfile$.next(this.user);
 
       // set a timer which will log out the user when the JWT expires
       this.jwtDurationTimeout = setTimeout(
@@ -50,7 +54,7 @@ export class AuthenticationService {
     }
   }
 
-  login(credentials: IUserCredentials): Observable<string> {
+  login(credentials: IUserCredentials): Observable<ILoginSuccessResponse> {
     return this.http.post(`${API_URL}/login`, credentials).pipe(
       map(response => {
         // get JWT from the JSON response body
@@ -63,11 +67,8 @@ export class AuthenticationService {
         const jwtPayload = this.parseJwt(this.authToken) as IJwtUserData;
 
         // set the user profile data
-        this.userProfile$.next({
-          fullName: jwtPayload.sub,
-          role: jwtPayload.role,
-          username: jwtPayload.sub
-        } as IUserProfile);
+        this.user = this.constructUserProfile(jwtPayload);
+        this.userProfile$.next(this.user);
 
         // set a timer which will log out the user when the JWT expires
         this.jwtDurationTimeout = setTimeout(
@@ -75,7 +76,7 @@ export class AuthenticationService {
           (jwtPayload.exp - jwtPayload.iat) * 1000
         );
 
-        return this.authToken;
+        return { token: this.authToken, profile: this.user };
       })
     );
   }
@@ -112,7 +113,29 @@ export class AuthenticationService {
     return of(!!this.authToken);
   }
 
+  getUserDetails() {
+    return this.user;
+  }
+
+  getBaseRouteForUser(role: UserRole) {
+    if (role === 'ADMIN') {
+      return 'administration';
+    } else if (role === 'STUDENT' || role === 'PROFESSOR') {
+      return role.toLowerCase();
+    } else {
+      return '';
+    }
+  }
+
   private parseJwt(jwt: string) {
     return this.jwtUtil.decodeToken() as IJwtUserData;
+  }
+
+  private constructUserProfile(jwtPayload: IJwtUserData): IUserProfile {
+    return {
+      fullName: jwtPayload.sub,
+      role: jwtPayload.role,
+      username: jwtPayload.sub
+    };
   }
 }

@@ -7,10 +7,10 @@ import {
 } from '@angular/router';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './../authentication.service';
 
 @Injectable()
-export class NoSessionGuard implements CanActivate {
+export class LoggedInGuard implements CanActivate {
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -18,14 +18,14 @@ export class NoSessionGuard implements CanActivate {
       map(
         isLoggedIn => {
           if (!isLoggedIn) {
-            return true;
+            this.router.navigate(['login']);
+            return false;
           }
 
-          this.router.navigate(['']);
-          return false;
+          return true;
         },
         error => {
-          return of(true);
+          return of(false);
         }
       )
     );

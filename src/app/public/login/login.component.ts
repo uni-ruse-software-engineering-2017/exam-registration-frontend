@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/authentication.service';
 import { HttpErrorHandlerService } from '../../core/http-error-handler.service';
+import { UserRole } from '../../models/authentication-models';
 
 interface ILoginModel {
   emailAddress: string;
@@ -42,8 +43,10 @@ export class LoginComponent {
         password: formData.password
       })
       .subscribe(
-        token => {
-          this.router.navigate(['']);
+        successfulLogin => {
+          this.router.navigate([
+            this.auth.getBaseRouteForUser(successfulLogin.profile.role)
+          ]);
         },
         error => {
           this.errorHandler.handle(error);

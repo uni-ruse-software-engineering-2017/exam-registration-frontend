@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeroCardComponent } from './hero-card/hero-card.component';
+import { HomeComponent } from './home/home.component';
 import { MaterialComponentsModule } from './material-components.module';
 
 @NgModule({
@@ -17,8 +18,9 @@ import { MaterialComponentsModule } from './material-components.module';
     TranslateModule,
     MaterialComponentsModule,
     ReactiveFormsModule,
-    HeroCardComponent
+    HeroCardComponent,
+    HomeComponent
   ],
-  declarations: [HeroCardComponent]
+  declarations: [HeroCardComponent, HomeComponent]
 })
 export class SharedModule {}
