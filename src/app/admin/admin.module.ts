@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
+import { AddProfessorModalComponent } from './professors-management/modals/add-professor-modal/add-professor-modal.component';
 import { ProfessorsManagementComponent } from './professors-management/professors-management.component';
 import { ProfessorService } from './services/professor.service';
 import { AddSubjectModalComponent } from './subjects-management/modals/add-subject-modal/add-subject-modal.component';
@@ -13,9 +14,10 @@ import { SubjectsManagementComponent } from './subjects-management/subjects-mana
   declarations: [
     ProfessorsManagementComponent,
     SubjectsManagementComponent,
-    AddSubjectModalComponent
+    AddSubjectModalComponent,
+    AddProfessorModalComponent
   ],
   providers: [ProfessorService],
-  entryComponents: [AddSubjectModalComponent]
+  entryComponents: [AddSubjectModalComponent, AddProfessorModalComponent]
 })
 export class AdminModule {}

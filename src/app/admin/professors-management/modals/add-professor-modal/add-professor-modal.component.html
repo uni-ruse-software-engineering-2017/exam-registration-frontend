@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 class="mat-title" translate>Add new professor</h2>
+  <mat-form-field>
+    <input
+      type="email"
+      matInput
+      placeholder="{{ 'Email Address' | translate }}"
+      formControlName="username"
+      required>
+    <mat-error *ngIf="form.controls['username'].errors?.required" translate>
+      The email address is a required field
+    </mat-error>
+    <mat-error *ngIf="form.controls['username'].errors?.email" translate>
+      Invalid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Full Name' | translate }}"
+      formControlName="fullName"
+      required>
+    <mat-error *ngIf="form.controls['fullName'].errors?.required" translate>
+      The professor's name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Cabinet' | translate }}"
+      formControlName="cabinet">
+    <mat-error *ngIf="form.controls['cabinet'].errors?.required" translate>
+      The professor's cabinet is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Phone Number' | translate }}"
+      formControlName="phoneNumber">
+    <mat-error *ngIf="form.controls['phoneNumber'].errors?.required" translate>
+      The professor's phone number is required
+    </mat-error>
+  </mat-form-field>
+  <div class="actions">
+    <button type="button" mat-button (click)="modalRef.close()">
+      <span translate>Cancel</span>
+    </button>
+    <button type="submit" mat-raised-button color="primary">
+      <span translate>Save</span>
+    </button>
+  </div>
+</form>

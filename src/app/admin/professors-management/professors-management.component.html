@@ -1,3 +1,27 @@
-<p>
-  professors-management works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title translate>Professors</mat-card-title>
+    <mat-card-subtitle translate>Add professors into the system and manage the subjects they teach</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let professor of professors">
+        <h3 matLine>{{professor.fullName}}</h3>
+        <p class="mat-caption" matLine>
+          {{professor.username}}
+        </p>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button color="primary" mat-raised-button (click)="openAddProfessorModal()">
+      <span translate>Add new professor</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

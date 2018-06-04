@@ -1,15 +1,17 @@
 import { UserRole } from './../models/authentication-models';
 
-export interface IProfessor {
+export interface IProfessor extends INewProfessor {
   id: number;
-  username: string;
-  password?: string;
-  fullName: string;
   role: UserRole;
-  active?: boolean;
+  active: boolean;
+  subjectsTeaching?: ISubject[];
+}
+
+export interface INewProfessor {
+  username: string;
+  fullName: string;
   cabinet: string;
   phoneNumber: string;
-  subjectsTeaching?: ISubject[];
 }
 
 export interface ISubject {
