@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfessorsManagementComponent } from './professors-management.component';
+import { AddSubjectModalComponent } from './add-subject-modal.component';
 
 // TODO: fix test
-xdescribe('ProfessorsManagementComponent', () => {
-  let component: ProfessorsManagementComponent;
-  let fixture: ComponentFixture<ProfessorsManagementComponent>;
+xdescribe('AddSubjectModalComponent', () => {
+  let component: AddSubjectModalComponent;
+  let fixture: ComponentFixture<AddSubjectModalComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [ProfessorsManagementComponent]
+        declarations: [AddSubjectModalComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfessorsManagementComponent);
+    fixture = TestBed.createComponent(AddSubjectModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

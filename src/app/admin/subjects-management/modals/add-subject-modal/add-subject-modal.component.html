@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 class="mat-title" translate>Add new subject</h2>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Name' | translate }}"
+      formControlName="name"
+      required>
+    <mat-error *ngIf="form.controls['name'].errors?.required" translate>
+      The subject name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field floatLabel="never">
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Description (optional)' | translate }}"
+      formControlName="description">
+  </mat-form-field>
+  <div class="actions">
+    <button type="button" mat-button (click)="modalRef.close()">
+      <span translate>Cancel</span>
+    </button>
+    <button type="submit" mat-raised-button color="primary">
+      <span translate>Save</span>
+    </button>
+  </div>
+</form>

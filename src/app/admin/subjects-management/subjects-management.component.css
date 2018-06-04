@@ -1,0 +1,8 @@
+h3[matLine] {
+  font-size: 1.125em;
+}
+
+p[matLine] {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.67);
+}

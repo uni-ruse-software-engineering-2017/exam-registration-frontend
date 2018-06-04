@@ -6,6 +6,8 @@ import { LoggedInGuard } from './route-guards/logged-in.guard';
 import { NoSessionGuard } from './route-guards/no-session.guard';
 import { ProfessorGuard } from './route-guards/professor.guard';
 import { StudentGuard } from './route-guards/student.guard';
+import { ConfirmationModalService } from './services/confirmation-modal.service';
+import { SubjectService } from './services/subject.service';
 
 @NgModule({
   imports: [],
@@ -13,12 +15,14 @@ import { StudentGuard } from './route-guards/student.guard';
   declarations: [],
   providers: [
     AuthenticationService,
+    SubjectService,
     LoggedInGuard,
     NoSessionGuard,
     StudentGuard,
     ProfessorGuard,
     AdminGuard,
-    HttpErrorHandlerService
+    HttpErrorHandlerService,
+    ConfirmationModalService
   ]
 })
 export class CoreModule {}

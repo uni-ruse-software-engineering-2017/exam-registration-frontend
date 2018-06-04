@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ConfirmModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialComponentsModule } from './material-components.module';
@@ -19,8 +20,10 @@ import { MaterialComponentsModule } from './material-components.module';
     MaterialComponentsModule,
     ReactiveFormsModule,
     HeroCardComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmModalComponent
   ],
-  declarations: [HeroCardComponent, HomeComponent]
+  declarations: [HeroCardComponent, HomeComponent, ConfirmModalComponent],
+  entryComponents: [ConfirmModalComponent]
 })
 export class SharedModule {}

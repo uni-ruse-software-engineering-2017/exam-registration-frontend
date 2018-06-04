@@ -1,3 +1,28 @@
-<p>
-  subjects-management works!
-</p>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title translate>Subjects</mat-card-title>
+    <mat-card-subtitle translate>Add, remove or edit study subjects</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let subject of subjects">
+        <h3 matLine>{{subject.name}}</h3>
+        <p class="mat-caption" matLine>
+          {{subject.description}}
+        </p>
+        <button mat-icon-button (click)="openEditSubjectModal(subject)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openDeleteSubjectModal(subject)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button color="primary" mat-raised-button (click)="openAddSubjectModal()">
+      <span translate>Add new subject</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

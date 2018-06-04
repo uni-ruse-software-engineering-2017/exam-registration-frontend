@@ -4,6 +4,7 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatDialogModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -31,7 +32,8 @@ const materialModules = [
   MatIconModule,
   MatSnackBarModule,
   MatTooltipModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatDialogModule
 ];
 
 /**

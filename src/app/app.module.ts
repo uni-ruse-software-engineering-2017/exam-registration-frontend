@@ -34,7 +34,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        whitelistedDomains: [environment.API_URL]
+        whitelistedDomains: [environment.API_URL, environment.API_URL.replace(/^https?:\/\//, '')]
       }
     }),
     BrowserAnimationsModule,
