@@ -1,0 +1,54 @@
+mat-list-item:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+
+.max-seats {
+  min-width: 72px;
+}
+
+[matListIcon].mat-list-icon {
+  color: white;
+  background-color: lightgray;
+  width: 72px;
+  height: 72px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .date-icon__date {
+    font-size: 21px;
+  }
+
+  .date-icon__year {
+    font-size: 14px;
+  }
+
+  &.approved {
+    background-color: lightgreen;
+  }
+
+  &.pending {
+    background-color: lightsalmon;
+  }
+
+  &.rejected {
+    background-color: orangered;
+  }
+
+  &.none {
+    background-color: lightslategray;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 32px;
+    height: 32px;
+    .date-icon__date {
+      font-size: 14px;
+    }
+    .date-icon__year {
+      display: none;
+    }
+  }
+}

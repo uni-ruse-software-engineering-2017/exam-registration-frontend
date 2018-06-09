@@ -7,6 +7,7 @@ import { NoSessionGuard } from './route-guards/no-session.guard';
 import { ProfessorGuard } from './route-guards/professor.guard';
 import { StudentGuard } from './route-guards/student.guard';
 import { ConfirmationModalService } from './services/confirmation-modal.service';
+import { ExamService } from './services/exam.service';
 import { SubjectService } from './services/subject.service';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SubjectService } from './services/subject.service';
   providers: [
     AuthenticationService,
     SubjectService,
+    ExamService,
     LoggedInGuard,
     NoSessionGuard,
     StudentGuard,
