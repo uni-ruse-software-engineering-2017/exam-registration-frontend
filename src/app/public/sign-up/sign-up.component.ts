@@ -22,7 +22,7 @@ interface ISignUpFormData {
 @Component({
   selector: 'ru-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
   PASSWORD_MIN_LENGTH = 8;

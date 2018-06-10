@@ -5,7 +5,7 @@ import { IStudentUpcomingExam } from './../../models/exam-models';
 @Component({
   selector: 'ru-student-dashboard',
   templateUrl: './student-dashboard.component.html',
-  styleUrls: ['./student-dashboard.component.css']
+  styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
   upcomingExamsColumns = [

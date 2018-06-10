@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../core/authentication.service';
 @Component({
   selector: 'ru-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router) {}

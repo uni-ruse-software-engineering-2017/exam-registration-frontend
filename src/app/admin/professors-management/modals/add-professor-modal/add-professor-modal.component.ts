@@ -9,7 +9,7 @@ import { ProfessorService } from '../../../services/professor.service';
 @Component({
   selector: 'ru-add-professor-modal',
   templateUrl: './add-professor-modal.component.html',
-  styleUrls: ['./add-professor-modal.component.css']
+  styleUrls: ['./add-professor-modal.component.scss']
 })
 export class AddProfessorModalComponent implements OnInit {
   form: FormGroup;
