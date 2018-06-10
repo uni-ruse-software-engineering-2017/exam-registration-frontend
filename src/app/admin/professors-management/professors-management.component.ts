@@ -9,7 +9,7 @@ import { AddProfessorModalComponent } from './modals/add-professor-modal/add-pro
 @Component({
   selector: 'ru-professors-management',
   templateUrl: './professors-management.component.html',
-  styleUrls: ['./professors-management.component.css']
+  styleUrls: ['./professors-management.component.scss']
 })
 export class ProfessorsManagementComponent implements OnInit {
   professors: IProfessor[] = [];

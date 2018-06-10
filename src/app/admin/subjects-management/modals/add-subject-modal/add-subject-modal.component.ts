@@ -10,7 +10,7 @@ import { ISubject } from '../../../../models/professor.model';
 @Component({
   selector: 'ru-add-subject-modal',
   templateUrl: './add-subject-modal.component.html',
-  styleUrls: ['./add-subject-modal.component.css']
+  styleUrls: ['./add-subject-modal.component.scss']
 })
 export class AddSubjectModalComponent implements OnInit {
   form: FormGroup;

@@ -13,7 +13,7 @@ interface ILoginModel {
 @Component({
   selector: 'ru-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   loginForm: FormGroup;

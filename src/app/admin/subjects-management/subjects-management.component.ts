@@ -11,7 +11,7 @@ import { AddSubjectModalComponent } from './modals/add-subject-modal/add-subject
 @Component({
   selector: 'ru-subjects-management',
   templateUrl: './subjects-management.component.html',
-  styleUrls: ['./subjects-management.component.css']
+  styleUrls: ['./subjects-management.component.scss']
 })
 export class SubjectsManagementComponent implements OnInit {
   subjects: ISubject[] = [];

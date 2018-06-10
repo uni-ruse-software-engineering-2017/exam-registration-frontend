@@ -6,7 +6,7 @@ import { IUserProfile } from '../../models/authentication-models';
 @Component({
   selector: 'ru-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
   @Input() userDetails: IUserProfile;

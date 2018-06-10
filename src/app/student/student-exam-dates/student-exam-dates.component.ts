@@ -6,7 +6,7 @@ import { ISubject } from '../../models/professor.model';
 @Component({
   selector: 'ru-student-exam-dates',
   templateUrl: './student-exam-dates.component.html',
-  styleUrls: ['./student-exam-dates.component.css']
+  styleUrls: ['./student-exam-dates.component.scss']
 })
 export class StudentExamDatesComponent implements OnInit {
   subjects: ISubject[] = [];
