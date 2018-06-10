@@ -1,0 +1,46 @@
+mat-card-content {
+  display: flex;
+
+  mat-calendar {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .calendar-container {
+    flex: 3;
+  }
+
+  .exams-container {
+    flex: 5;
+  }
+
+  .no-exams {
+    flex: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  mat-list-item {
+    button {
+      min-width: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    display: block;
+
+    .no-exams {
+      margin-top: 12px;
+      padding: 4px;
+    }
+  }
+}
+
+h3[matline].mat-line {
+  font-size: 1.125em;
+  margin-bottom: 4px;
+}
+
+p[matline].mat-line {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.67);
+}

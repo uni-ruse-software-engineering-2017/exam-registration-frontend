@@ -9,7 +9,7 @@ const API_URL = environment.API_URL;
 interface IExamQuery {
   professorId?: number;
   subjectId?: number;
-  startDate?: string;
+  date?: string;
 }
 
 @Injectable()

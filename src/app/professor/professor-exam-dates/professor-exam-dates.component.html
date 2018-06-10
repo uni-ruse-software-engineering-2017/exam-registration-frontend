@@ -1,3 +1,15 @@
-<p>
-  professor-exam-dates works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="mat-title" translate>Choose a Subject</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list *ngIf="subjects?.length">
+      <mat-list-item *ngFor="let subject of subjects; trackBy: subject?.id">
+        <a [routerLink]="['../exam-dates', subject.id]" color="primary" mat-raised-button>
+          <span>{{ subject.name }}</span>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

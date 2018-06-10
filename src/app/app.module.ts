@@ -52,6 +52,9 @@ export function tokenGetter() {
 })
 export class AppModule {
   constructor(private router: Router, private loading: LoadingService) {
+    /**
+     * Displays loading bar when navigating to other routes
+     */
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         loading.start();

@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import {
+  DateAdapter,
+  MAT_DATE_LOCALE,
   MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatNativeDateModule,
   MatNavList,
   MatProgressBarModule,
   MatSidenavModule,
@@ -17,6 +21,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { BulgarianDateAdapter } from './bg-date-adapter';
 
 const materialModules = [
   MatButtonModule,
@@ -33,7 +38,9 @@ const materialModules = [
   MatSnackBarModule,
   MatTooltipModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 /**
@@ -43,6 +50,16 @@ const materialModules = [
  */
 @NgModule({
   imports: materialModules,
-  exports: materialModules
+  exports: materialModules,
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'bg-Bg'
+    },
+    {
+      provide: DateAdapter,
+      useClass: BulgarianDateAdapter
+    }
+  ]
 })
 export class MaterialComponentsModule {}
