@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-title">
+    <h2 class="mat-title" translate>Publish new date</h2>
+    <h3 class="mat-subtitle">{{ dialogData.date | date }}</h3>
+  </div>
+  <ru-time-input formControlName="startTime" label="{{ 'Start time' | translate }}"></ru-time-input>
+  <ru-time-input formControlName="endTime" label="{{ 'End time' | translate }}"></ru-time-input>
+  <mat-form-field>
+    <input matInput placeholder="{{ 'Hall' | translate }}" formControlName="hall" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="number"
+      formControlName="maxSeats"
+      matInput
+      placeholder="{{ 'Max seats' | translate }}"
+      [max]="MAX_SEATS"
+      [min]="MIN_SEATS"
+      required>
+  </mat-form-field>
+  <div class="actions">
+    <button type="button" mat-button (click)="modalRef.close()">
+      <span translate>Cancel</span>
+    </button>
+    <button type="submit" mat-raised-button color="primary">
+      <span translate>Save</span>
+    </button>
+  </div>
+</form>
+

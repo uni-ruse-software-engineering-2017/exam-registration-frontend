@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.time-input__container {
+  display: block;
+
+  .separator {
+    margin-left: 8px;
+    margin-right: 8px;
+    user-select: none;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .mat-form-field {
+      width: 130px;
+    }
+  }
+}

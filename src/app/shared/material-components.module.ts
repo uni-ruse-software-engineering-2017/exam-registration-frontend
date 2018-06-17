@@ -15,6 +15,7 @@ import {
   MatNativeDateModule,
   MatNavList,
   MatProgressBarModule,
+  MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
   MatTableModule,
@@ -40,7 +41,8 @@ const materialModules = [
   MatProgressBarModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
 ];
 
 /**

@@ -1,0 +1,14 @@
+<div class="time-input__container">
+  <mat-form-field>
+    <mat-label *ngIf="label">{{ label }}</mat-label>
+    <mat-select id="hour-{{ label }}" [formControl]="hour" (selectionChange)="onHourChanged($event)">
+      <mat-option [value]="h.value" *ngFor="let h of hoursSelectList">{{ h.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="separator">:</span>
+  <mat-form-field>
+    <mat-select [formControl]="minute" (selectionChange)="onMinuteChanged($event)">
+      <mat-option [value]="m.value" *ngFor="let m of minutesSelectList">{{ m.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

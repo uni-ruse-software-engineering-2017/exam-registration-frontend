@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { HttpErrorHandlerService } from '../../../core/http-error-handler.service';
 import { IExamResponse } from '../../../core/models/http-responses';
 import { ExamService } from '../../../core/services/exam.service';
 import { SubjectService } from '../../../core/services/subject.service';
 import { ISubject } from '../../../models/professor.model';
+import { AddExamModalComponent } from '../professor-exam-dates/modals/add-exam-modal/add-exam-modal.component';
 
 @Component({
   selector: 'ru-professor-exam-dates-by-subject',
@@ -22,6 +25,7 @@ export class ProfessorExamDatesBySubjectComponent implements OnInit {
     private route: ActivatedRoute,
     private subjectService: SubjectService,
     private examService: ExamService,
+    private dialog: MatDialog,
     private errorHandler: HttpErrorHandlerService
   ) {}
 
@@ -43,6 +47,22 @@ export class ProfessorExamDatesBySubjectComponent implements OnInit {
   onDateSelected(event) {
     this.selectedDate = event;
     this.getExams();
+  }
+
+  openAddExamModal() {
+    const modalRef = this.dialog.open(AddExamModalComponent, {
+      data: {
+        date: this.selectedDate,
+        subjectId: this.subjectId
+      }
+    });
+
+    return modalRef
+      .afterClosed()
+      .pipe(filter((result: boolean) => result))
+      .subscribe(() => {
+        this.getExams();
+      });
   }
 
   /**

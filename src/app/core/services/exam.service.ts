@@ -6,10 +6,17 @@ import { environment } from '../../../environments/environment';
 import { IExamResponse } from '../models/http-responses';
 const API_URL = environment.API_URL;
 
-interface IExamQuery {
+export interface IExamQuery {
   professorId?: number;
   subjectId?: number;
   date?: string;
+}
+
+export interface INewExam {
+  hall: string;
+  maxSeats: number;
+  startTime: number;
+  endTime: number;
 }
 
 @Injectable()
@@ -24,6 +31,12 @@ export class ExamService {
 
   getById(examId: number) {
     return this.http.get(`${API_URL}/exams/${examId}`) as Observable<
+      IExamResponse
+    >;
+  }
+
+  create(exam: INewExam) {
+    return this.http.post(`${API_URL}/exams`, exam) as Observable<
       IExamResponse
     >;
   }

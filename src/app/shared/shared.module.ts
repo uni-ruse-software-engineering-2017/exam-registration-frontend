@@ -6,6 +6,7 @@ import { ConfirmModalComponent } from './confirmation-modal/confirmation-modal.c
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialComponentsModule } from './material-components.module';
+import { TimeInputComponent } from './time-input/time-input.component';
 
 @NgModule({
   imports: [
@@ -21,9 +22,15 @@ import { MaterialComponentsModule } from './material-components.module';
     ReactiveFormsModule,
     HeroCardComponent,
     HomeComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    TimeInputComponent
   ],
-  declarations: [HeroCardComponent, HomeComponent, ConfirmModalComponent],
+  declarations: [
+    HeroCardComponent,
+    HomeComponent,
+    ConfirmModalComponent,
+    TimeInputComponent
+  ],
   entryComponents: [ConfirmModalComponent]
 })
 export class SharedModule {}

@@ -7,6 +7,7 @@ import { ProfessorDashboardComponent } from './professor-dashboard/professor-das
 // tslint:disable-next-line:max-line-length
 import { ProfessorExamDatesBySubjectComponent } from './professor-exam-dates/professor-exam-dates-by-subject/professor-exam-dates-by-subject.component';
 import { ProfessorExamDatesComponent } from './professor-exam-dates/professor-exam-dates.component';
+import { AddExamModalComponent } from './professor-exam-dates/professor-exam-dates/modals/add-exam-modal/add-exam-modal.component';
 import { ProfessorRoutingModule } from './professor-routing.module';
 
 @NgModule({
@@ -15,7 +16,9 @@ import { ProfessorRoutingModule } from './professor-routing.module';
     ProfessorDashboardComponent,
     ProfessorExamDatesComponent,
     ExamsArchiveComponent,
-    ProfessorExamDatesBySubjectComponent
-  ]
+    ProfessorExamDatesBySubjectComponent,
+    AddExamModalComponent
+  ],
+  entryComponents: [AddExamModalComponent]
 })
 export class ProfessorModule {}

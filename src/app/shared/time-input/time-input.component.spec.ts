@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfessorExamDatesComponent } from './professor-exam-dates.component';
+import { TimeInputComponent } from './time-input.component';
 
 // TODO: fix test
-xdescribe('ProfessorExamDatesComponent', () => {
-  let component: ProfessorExamDatesComponent;
-  let fixture: ComponentFixture<ProfessorExamDatesComponent>;
+xdescribe('TimeInputComponent', () => {
+  let component: TimeInputComponent;
+  let fixture: ComponentFixture<TimeInputComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [ProfessorExamDatesComponent]
+        declarations: [TimeInputComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfessorExamDatesComponent);
+    fixture = TestBed.createComponent(TimeInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
