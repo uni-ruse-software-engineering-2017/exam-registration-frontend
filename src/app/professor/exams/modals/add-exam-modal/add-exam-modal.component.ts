@@ -3,11 +3,8 @@ import { Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRef } from '@angular/material';
-import { HttpErrorHandlerService } from '../../../../../core/http-error-handler.service';
-import {
-  ExamService,
-  INewExam
-} from '../../../../../core/services/exam.service';
+import { HttpErrorHandlerService } from '../../../../core/http-error-handler.service';
+import { ExamService, INewExam } from '../../../../core/services/exam.service';
 
 @Component({
   selector: 'ru-add-exam-modal',

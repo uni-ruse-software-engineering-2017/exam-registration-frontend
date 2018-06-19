@@ -7,7 +7,7 @@ import { IExamResponse } from '../../../core/models/http-responses';
 import { ExamService } from '../../../core/services/exam.service';
 import { SubjectService } from '../../../core/services/subject.service';
 import { ISubject } from '../../../models/professor.model';
-import { AddExamModalComponent } from '../professor-exam-dates/modals/add-exam-modal/add-exam-modal.component';
+import { AddExamModalComponent } from './../modals/add-exam-modal/add-exam-modal.component';
 
 @Component({
   selector: 'ru-professor-exam-dates-by-subject',
