@@ -20,7 +20,8 @@ mat-card-content {
   }
 
   mat-list-item {
-    button {
+    button,
+    a {
       min-width: 100px;
     }
   }

@@ -1,0 +1,41 @@
+.request-status {
+  mat-icon {
+    user-select: none;
+  }
+
+  &.pending {
+    color: black;
+    background-color: lightgrey;
+    mat-icon {
+      opacity: 0.54;
+    }
+  }
+
+  &.approved {
+    color: white;
+    background-color: lightgreen;
+    mat-icon {
+      opacity: 0.72;
+    }
+  }
+
+  &.rejected {
+    color: black;
+    background-color: indianred;
+    mat-icon {
+      opacity: 0.54;
+    }
+  }
+}
+
+button {
+  min-width: 100px;
+  display: inline-block;
+  &.approve {
+    color: limegreen;
+  }
+
+  &.reject {
+    color: tomato;
+  }
+}

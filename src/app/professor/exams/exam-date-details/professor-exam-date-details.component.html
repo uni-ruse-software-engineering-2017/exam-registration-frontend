@@ -1,3 +1,29 @@
-<p>
-  professor-exam-date-details works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Exam {{ exam?.subject.name }}</mat-card-title>
+    <mat-card-subtitle>{{ exam?.startTime | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let pr of exam.participationRequests">
+        <span class="request-status" [ngClass]="pr.status | lowercase" matListIcon [ngSwitch]="pr.status">
+          <mat-icon *ngSwitchCase="'APPROVED'" matTooltip="{{ 'Approved' | translate }}">done</mat-icon>
+          <mat-icon *ngSwitchCase="'REJECTED'" matTooltip="{{ 'Rejected' | translate }}">close</mat-icon>
+          <mat-icon *ngSwitchDefault matTooltip="{{ 'Pending' | translate }}">help_outline</mat-icon>
+        </span>
+        <h3 matLine>
+          {{ pr.student.fullName || pr.student.username }}
+        </h3>
+        <p class="mat-caption" matLine>
+          {{ pr.student.facultyNumber }}, {{ pr.student.specialty }} ({{ pr.student.groupNumber }})
+        </p>
+        <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="pr.status === 'PENDING'">
+          <span translate>Approve</span>
+        </button>
+        <button class="reject" (click)="rejectStudent(pr)" mat-button *ngIf="pr.status === 'PENDING'">
+          <span translate>Reject</span>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
