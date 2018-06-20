@@ -45,6 +45,15 @@ img {
   text-transform: uppercase;
 }
 
+/** Material Card Overrides */
+.mat-card-header .mat-card-title {
+  font-size: 21px;
+}
+
+.mat-card-header .mat-card-subtitle {
+  font-size: 16px;
+}
+
 /** Display only the first error when there are multiple errors **/
 mat-error {
   margin-bottom: 8px;

@@ -39,3 +39,63 @@ button {
     color: tomato;
   }
 }
+
+[mat-card-avatar] {
+  margin-right: 8px;
+  width: 54px;
+  height: 54px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exam-details {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  .professor-information {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  h2 {
+    margin-bottom: 12px;
+  }
+
+  h4,
+  h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    mat-icon {
+      margin-right: 12px;
+      user-select: none;
+      opacity: 0.62;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.enrolled-students {
+  padding-top: 16px;
+
+  h2 {
+    span:first-of-type {
+      margin-right: 4px;
+    }
+  }
+
+  .mat-list .mat-list-item .mat-list-item-content {
+    padding: 0;
+  }
+
+  .no-enrolled {
+    margin-top: 16px;
+  }
+}
