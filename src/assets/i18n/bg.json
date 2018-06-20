@@ -17,6 +17,7 @@
 	"Cabinet": "Кабинет",
 	"Cancel": "Отказ",
 	"Choose a Subject": "Изберете учебна дисциплина",
+	"Close": "Затвори",
 	"Confirm": "Потвърди",
 	"Dashboard": "Начало",
 	"Date": "Дата",
@@ -52,7 +53,9 @@
 	"Professors Management": "Управление на преподаватели",
 	"Publish new date": "Публикувайте дата",
 	"RU Angel Kanchev": "РУ \"Ангел Кънчев\"",
+	"Reason": "Причина",
 	"Reject": "Откажи",
+	"Reject Student": "Откажете явяване",
 	"Rejected": "Отказан",
 	"Repeat Password": "Повторете паролата",
 	"Resource not found": "Исканият от Вас ресурс не е намерен",
@@ -81,6 +84,7 @@
 	"You appear to be offline": "Изглежда, че сте офлайн. Проверете Вашата интернет връзка и опитайте отново.",
 	"You don't have the required permissions": "Нямате необходимите права, за да извършите действието",
 	"You must enter a password": "Трябва да въведете парола",
+	"You must provide a reason for the rejection": "Трябва да попълните причина за отказа.",
 	"You must repeat your password": "Трябва да повторите паролата си",
 	"Your password is not long enough": "Паролата трябва да е дълга поне {{ minlength }} символа"
 }

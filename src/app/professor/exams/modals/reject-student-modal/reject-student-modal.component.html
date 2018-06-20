@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-title">
+    <h2 class="mat-title" translate>Reject Student</h2>
+    <h3 class="mat-subtitle">{{ data.enrollment.student.fullName }}</h3>
+    <h4>{{ data.enrollment.student.facultyNumber }}, {{ data.enrollment.student.specialty }} ({{ data.enrollment.student.groupNumber }})</h4>
+  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="{{ 'Reason' | translate }}" formControlName="reason" required>
+    </textarea>
+    <mat-error *ngIf="form.controls['reason'].errors?.required">
+      <span translate>You must provide a reason for the rejection</span>
+    </mat-error>
+  </mat-form-field>
+  <div class="actions">
+    <button type="button" mat-button (click)="modalRef.close()">
+      <span translate>Close</span>
+    </button>
+    <button type="submit" mat-raised-button color="warn">
+      <span translate>Reject</span>
+    </button>
+  </div>
+</form>
+

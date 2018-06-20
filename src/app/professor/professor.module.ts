@@ -7,6 +7,7 @@ import { ProfessorDashboardComponent } from './dashboard/professor-dashboard.com
 import { ProfessorExamDateDetailsComponent } from './exams/exam-date-details/professor-exam-date-details.component';
 import { ProfessorExamDatesBySubjectComponent } from './exams/exam-dates-by-subject/professor-exam-dates-by-subject.component';
 import { AddExamModalComponent } from './exams/modals/add-exam-modal/add-exam-modal.component';
+import { RejectStudentModalComponent } from './exams/modals/reject-student-modal/reject-student-modal.component';
 import { ProfessorExamDatesComponent } from './exams/professor-exam-dates.component';
 import { ProfessorRoutingModule } from './professor-routing.module';
 
@@ -18,8 +19,9 @@ import { ProfessorRoutingModule } from './professor-routing.module';
     ExamsArchiveComponent,
     ProfessorExamDatesBySubjectComponent,
     AddExamModalComponent,
-    ProfessorExamDateDetailsComponent
+    ProfessorExamDateDetailsComponent,
+    RejectStudentModalComponent
   ],
-  entryComponents: [AddExamModalComponent]
+  entryComponents: [AddExamModalComponent, RejectStudentModalComponent]
 })
 export class ProfessorModule {}

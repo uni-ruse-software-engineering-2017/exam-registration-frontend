@@ -48,7 +48,7 @@
           <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="pr.status === 'PENDING'">
             <span translate>Approve</span>
           </button>
-          <button class="reject" (click)="rejectStudent(pr)" mat-button *ngIf="pr.status === 'PENDING'">
+          <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="pr.status === 'PENDING'">
             <span translate>Reject</span>
           </button>
         </mat-list-item>

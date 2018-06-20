@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { flatMap } from 'rxjs/operators';
+import { flatMap, filter } from 'rxjs/operators';
 import { HttpErrorHandlerService } from '../../../core/http-error-handler.service';
 import {
   IEnrollmentRequest,
   IExamResponse
 } from '../../../core/models/http-responses';
 import { ExamService } from '../../../core/services/exam.service';
+import { MatDialog } from '@angular/material';
+import { RejectStudentModalComponent } from '../modals/reject-student-modal/reject-student-modal.component';
 
 @Component({
   selector: 'ru-professor-exam-date-details',
@@ -19,6 +21,7 @@ export class ProfessorExamDateDetailsComponent implements OnInit {
   constructor(
     private examService: ExamService,
     private route: ActivatedRoute,
+    private dialog: MatDialog,
     private errorHandler: HttpErrorHandlerService
   ) {}
 
@@ -48,17 +51,18 @@ export class ProfessorExamDateDetailsComponent implements OnInit {
       );
   }
 
-  rejectStudent(enrollmentRequest: IEnrollmentRequest) {
-    return this.examService
-      .changeEnrollmentStatus(
-        this.exam.id,
-        enrollmentRequest.student.id,
-        'REJECTED',
-        'No course work :('
-      )
-      .subscribe(
-        updatedExam => (this.exam = updatedExam),
-        error => this.errorHandler.handle(error)
-      );
+  openRejectStudentModal(enrollmentRequest: IEnrollmentRequest) {
+    this.dialog
+      .open(RejectStudentModalComponent, {
+        data: {
+          enrollment: enrollmentRequest,
+          examId: this.exam.id
+        }
+      })
+      .afterClosed()
+      .pipe(filter(result => !!result))
+      .subscribe((updatedExam: IExamResponse) => {
+        this.exam = updatedExam;
+      });
   }
 }
