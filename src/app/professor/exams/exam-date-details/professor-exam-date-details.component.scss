@@ -1,3 +1,5 @@
+@import '~styles/vars';
+
 .mat-card-header {
   display: flex;
   flex-direction: row;
@@ -96,15 +98,36 @@
     margin-top: 16px;
   }
 
-  button {
-    min-width: 100px;
-    display: inline-block;
-    &.approve {
-      color: limegreen;
+  .actions {
+    display: inherit;
+
+    button {
+      display: inline-block;
+      &.approve {
+        color: limegreen;
+      }
+
+      &.reject {
+        color: tomato;
+      }
     }
 
-    &.reject {
-      color: tomato;
+    @media only screen and (max-width: $mobileBreakpoint) {
+      &.desktop {
+        display: none;
+      }
+    }
+
+    @media only screen and (min-width: $mobileBreakpoint + 1px) {
+      &.mobile {
+        display: none;
+      }
+    }
+
+    &.desktop {
+      button {
+        min-width: 100px;
+      }
     }
   }
 }

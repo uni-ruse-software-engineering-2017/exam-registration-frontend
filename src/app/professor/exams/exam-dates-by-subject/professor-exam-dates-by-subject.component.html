@@ -20,8 +20,11 @@
           <p matLine>
             {{ exam.startTime | date: 'hh:mm' }} - {{ exam.endTime | date: 'hh:mm' }}, {{ exam.hall }}
           </p>
-          <a [routerLink]="['./details', exam.id]" color="primary" mat-raised-button>
+          <a class="desktop" [routerLink]="['./details', exam.id]" color="primary" mat-raised-button>
             <span translate>Details</span>
+          </a>
+          <a class="mobile" [routerLink]="['./details', exam.id]" mat-icon-button>
+            <mat-icon matTooltip="{{ 'Details' | translate }}">more_horiz</mat-icon>
           </a>
         </mat-list-item>
       </mat-list>

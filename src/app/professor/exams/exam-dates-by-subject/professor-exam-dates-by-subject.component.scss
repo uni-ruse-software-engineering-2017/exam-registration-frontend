@@ -1,3 +1,5 @@
+@import '~styles/vars';
+
 mat-card-content {
   display: flex;
 
@@ -21,12 +23,12 @@ mat-card-content {
 
   mat-list-item {
     button,
-    a {
+    a[mat-raised-button] {
       min-width: 100px;
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobileBreakpoint) {
     display: block;
 
     .no-exams {
@@ -44,4 +46,24 @@ h3[matline].mat-line {
 p[matline].mat-line {
   font-size: 0.85em;
   color: rgba(0, 0, 0, 0.67);
+}
+
+@media only screen and (max-width: $mobileBreakpoint) {
+  h3[matline].mat-line {
+    font-size: 0.85em;
+  }
+
+  p[matline].mat-line {
+    font-size: 0.76em;
+  }
+
+  .desktop {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakpoint + 1px) {
+  .mobile {
+    display: none;
+  }
 }
