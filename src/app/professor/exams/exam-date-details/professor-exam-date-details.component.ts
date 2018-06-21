@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { flatMap, filter } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { filter, flatMap, map, switchMap } from 'rxjs/operators';
+import { AuthenticationService } from '../../../core/authentication.service';
 import { HttpErrorHandlerService } from '../../../core/http-error-handler.service';
 import {
   IEnrollmentRequest,
   IExamResponse
 } from '../../../core/models/http-responses';
+import { ConfirmationModalService } from '../../../core/services/confirmation-modal.service';
 import { ExamService } from '../../../core/services/exam.service';
-import { MatDialog } from '@angular/material';
+import { IUserProfile } from '../../../models/authentication-models';
 import { RejectStudentModalComponent } from '../modals/reject-student-modal/reject-student-modal.component';
 
 @Component({
@@ -17,15 +21,22 @@ import { RejectStudentModalComponent } from '../modals/reject-student-modal/reje
 })
 export class ProfessorExamDateDetailsComponent implements OnInit {
   exam: IExamResponse;
+  professor: IUserProfile;
 
   constructor(
     private examService: ExamService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private errorHandler: HttpErrorHandlerService
+    private errorHandler: HttpErrorHandlerService,
+    private auth: AuthenticationService,
+    private confirmationModal: ConfirmationModalService,
+    private translate: TranslateService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    this.professor = this.auth.getUserDetails();
+
     this.route.params
       .pipe(flatMap(params => this.getExam(+params['examId'])))
       .subscribe(
@@ -64,5 +75,25 @@ export class ProfessorExamDateDetailsComponent implements OnInit {
       .subscribe((updatedExam: IExamResponse) => {
         this.exam = updatedExam;
       });
+  }
+
+  openConfirmCancellationModal(exam: IExamResponse) {
+    this.confirmationModal
+      .confirm(
+        this.translate.instant('Cancel Exam'),
+        this.translate.instant(
+          'Are you sure you want to cancel this exam date?'
+        )
+      )
+      .pipe(
+        filter(answer => !!answer),
+        switchMap(() => this.examService.cancel(exam.id))
+      )
+      .subscribe(
+        () => {
+          this.router.navigate(['../../'], { relativeTo: this.route });
+        },
+        error => this.errorHandler.handle(error)
+      );
   }
 }

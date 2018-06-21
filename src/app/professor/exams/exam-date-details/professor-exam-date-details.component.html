@@ -2,6 +2,13 @@
   <mat-card-header>
     <mat-card-title>{{ exam.subject.name }}</mat-card-title>
     <mat-card-subtitle>{{ exam.startTime | date: 'dd.MM.yyyy' }}, {{ exam.startTime | date: 'hh:mm' }}  - {{ exam.endTime | date: 'hh:mm' }}</mat-card-subtitle>
+    <button
+      mat-icon-button
+      matTooltip="{{ 'Cancel Exam' | translate }}"
+      (click)="openConfirmCancellationModal(exam)"
+      *ngIf="exam.professor.username === professor.username">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
@@ -45,10 +52,10 @@
           <p class="mat-caption" matLine>
             {{ pr.student.facultyNumber }}, {{ pr.student.specialty }} ({{ pr.student.groupNumber }})
           </p>
-          <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="pr.status === 'PENDING'">
+          <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
             <span translate>Approve</span>
           </button>
-          <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="pr.status === 'PENDING'">
+          <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
             <span translate>Reject</span>
           </button>
         </mat-list-item>

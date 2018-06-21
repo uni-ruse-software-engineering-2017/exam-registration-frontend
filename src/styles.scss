@@ -54,6 +54,11 @@ img {
   font-size: 16px;
 }
 
+.mat-card-header-text {
+  flex: 1;
+  width: 100%;
+}
+
 /** Display only the first error when there are multiple errors **/
 mat-error {
   margin-bottom: 8px;

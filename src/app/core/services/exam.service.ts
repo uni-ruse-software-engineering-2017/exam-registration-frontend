@@ -41,6 +41,10 @@ export class ExamService {
     >;
   }
 
+  cancel(examId: number) {
+    return this.http.delete(`${API_URL}/exams/${examId}`) as Observable<null>;
+  }
+
   changeEnrollmentStatus(
     examId: number,
     studentId: number,
