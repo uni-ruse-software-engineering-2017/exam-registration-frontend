@@ -37,40 +37,40 @@
     <section class="enrolled-students">
       <h2>
         <span translate>Enrolled Students</span>
-        <span>({{ exam.participationRequests.length }}/{{ exam.maxSeats }})</span>
+        <span>({{ exam.enrolledStudents.length }}/{{ exam.maxSeats }})</span>
       </h2>
-      <mat-list *ngIf="exam.participationRequests.length > 0">
-        <mat-list-item *ngFor="let pr of exam.participationRequests">
-          <span class="request-status" [ngClass]="pr.status | lowercase" matListIcon [ngSwitch]="pr.status">
+      <mat-list *ngIf="exam.enrolledStudents.length > 0">
+        <mat-list-item *ngFor="let e of exam.enrolledStudents">
+          <span class="request-status" [ngClass]="e.status | lowercase" matListIcon [ngSwitch]="e.status">
             <mat-icon *ngSwitchCase="'APPROVED'" matTooltip="{{ 'Approved' | translate }}">done</mat-icon>
             <mat-icon *ngSwitchCase="'REJECTED'" matTooltip="{{ 'Rejected' | translate }}">close</mat-icon>
             <mat-icon *ngSwitchDefault matTooltip="{{ 'Pending' | translate }}">help_outline</mat-icon>
           </span>
           <h3 matLine>
-            {{ pr.student.fullName || pr.student.username }}
+            {{ e.student.fullName || e.student.username }}
           </h3>
           <p class="mat-caption" matLine>
-            {{ pr.student.facultyNumber }}, {{ pr.student.specialty }} ({{ pr.student.groupNumber }})
+            {{ e.student.facultyNumber }}, {{ e.student.specialty }} ({{ e.student.groupNumber }})
           </p>
           <div class="actions desktop">
-            <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
+            <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <span translate>Approve</span>
             </button>
-            <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
+            <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <span translate>Reject</span>
             </button>
           </div>
           <div class="actions mobile">
-            <button class="approve" (click)="approveStudent(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
+            <button class="approve" (click)="approveStudent(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <mat-icon matTooltip="{{ 'Approve' | translate }}">done</mat-icon>
             </button>
-            <button class="reject" (click)="openRejectStudentModal(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && pr.status === 'PENDING'">
+            <button class="reject" (click)="openRejectStudentModal(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <mat-icon matTooltip="{{ 'Reject' | translate }}">close</mat-icon>
             </button>
           </div>
         </mat-list-item>
       </mat-list>
-      <p class="no-enrolled" *ngIf="exam.participationRequests.length === 0" translate>There are no students who enrolled yet</p>
+      <p class="no-enrolled" *ngIf="exam.enrolledStudents.length === 0" translate>There are no students who enrolled yet</p>
     </section>
   </mat-card-content>
 </mat-card>

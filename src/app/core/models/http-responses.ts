@@ -36,7 +36,7 @@ export interface IExamResponse {
   maxSeats: number;
   subject: ISubjectResponse;
   professor: IProfessorResponse;
-  participationRequests: IEnrollmentRequest[];
+  enrolledStudents: IEnrollmentRequest[];
   createdOn: Date;
   modifiedOn: Date;
   enrollmentStatus?: StudentEnrollmentStatus;

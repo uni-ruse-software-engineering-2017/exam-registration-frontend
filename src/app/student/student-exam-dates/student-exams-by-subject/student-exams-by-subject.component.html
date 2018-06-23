@@ -15,7 +15,7 @@
           {{ exam.startTime | date : 'hh:mm' }},
           {{ exam.hall }}
         </p>
-        <span class="max-seats">{{ exam.participationRequests.length }} / {{ exam.maxSeats }}</span>
+        <span class="max-seats">{{ exam.enrolledStudents.length }} / {{ exam.maxSeats }}</span>
         <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'">
           <span translate>Enroll</span>
         </button>
