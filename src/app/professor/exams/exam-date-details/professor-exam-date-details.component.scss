@@ -16,7 +16,7 @@
 
   &.pending {
     color: black;
-    background-color: lightgrey;
+    background-color: $colorStatusPending;
     mat-icon {
       opacity: 0.54;
     }
@@ -24,7 +24,7 @@
 
   &.approved {
     color: white;
-    background-color: lightgreen;
+    background-color: $colorStatusApproved;
     mat-icon {
       opacity: 0.72;
     }
@@ -32,7 +32,7 @@
 
   &.rejected {
     color: black;
-    background-color: indianred;
+    background-color: $colorStatusRejected;
     mat-icon {
       opacity: 0.54;
     }

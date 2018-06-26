@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthenticationService } from '../../core/authentication.service';
+import { HttpErrorHandlerService } from '../../core/http-error-handler.service';
+import {
+  IEnrollmentRequest,
+  StudentEnrollmentStatus
+} from '../../core/models/http-responses';
+import { ExamService } from '../../core/services/exam.service';
+import { EnrollmentService } from '../services/enrollment.service';
 import { IStudentUpcomingExam } from './../../models/exam-models';
 
 @Component({
@@ -10,71 +18,71 @@ import { IStudentUpcomingExam } from './../../models/exam-models';
 export class StudentDashboardComponent implements OnInit {
   upcomingExamsColumns = [
     'date',
+    'hall',
     'subject',
     'professor',
-    'duration',
+    'status',
     'actions'
   ];
+
   upcomingExams: MatTableDataSource<IStudentUpcomingExam>;
   upcomingExamsData: IStudentUpcomingExam[];
 
-  pastExamsColumns = ['date', 'subject', 'professor'];
-  pastExams: MatTableDataSource<IStudentUpcomingExam>;
-  pastExamsData: IStudentUpcomingExam[];
-
-  constructor() {}
+  constructor(
+    private examService: ExamService,
+    private enrolmentService: EnrollmentService,
+    private auth: AuthenticationService,
+    private errorHandler: HttpErrorHandlerService
+  ) {}
 
   ngOnInit() {
-    this.upcomingExamsData = [
-      {
-        date: new Date('04/01/2018'),
-        duration: 2,
-        room: '203b',
-        subject: 'Informatics',
-        professor: 'Plamenka Hristova'
-      },
-      {
-        date: new Date('04/21/2018'),
-        duration: 4,
-        room: '405a',
-        subject: 'Mathematics',
-        professor: 'Stepan Terzian'
-      },
-      {
-        date: new Date('04/28/2018'),
-        duration: 3,
-        room: '503',
-        subject: 'Intro to Programming',
-        professor: 'Vurban Iliev'
-      }
-    ];
+    this.getUpcomingExams();
+  }
 
-    this.upcomingExams = new MatTableDataSource(this.upcomingExamsData);
-
-    this.pastExamsData = [
-      {
-        date: new Date('04/01/2018'),
-        duration: 2,
-        room: '203b',
-        subject: 'Informatics',
-        professor: 'Plamenka Hristova'
+  getUpcomingExams() {
+    return this.examService.getUpcoming().subscribe(
+      exams => {
+        this.upcomingExamsData = exams.map(
+          e =>
+            ({
+              id: e.id,
+              date: e.startTime,
+              professor: e.professor.fullName,
+              room: e.hall,
+              subject: e.subject.name,
+              status: this._getStudentEnrolmentStatus(e.enrolledStudents)
+            } as IStudentUpcomingExam)
+        );
+        this.upcomingExams = new MatTableDataSource(this.upcomingExamsData);
       },
-      {
-        date: new Date('04/21/2018'),
-        duration: 4,
-        room: '405a',
-        subject: 'Mathematics',
-        professor: 'Stepan Terzian'
-      },
-      {
-        date: new Date('04/28/2018'),
-        duration: 3,
-        room: '503',
-        subject: 'Intro to Programming',
-        professor: 'Vurban Iliev'
-      }
-    ];
+      error => this.errorHandler.handle(error)
+    );
+  }
 
-    this.pastExams = new MatTableDataSource(this.pastExamsData);
+  cancelEnrolment(examId: number) {
+    return this.enrolmentService
+      .cancelEnrollment(examId)
+      .subscribe(
+        () => this.getUpcomingExams(),
+        error => this.errorHandler.handle(error)
+      );
+  }
+
+  _getStudentEnrolmentStatus(
+    enrolments: IEnrollmentRequest[]
+  ): StudentEnrollmentStatus {
+    if (!enrolments || enrolments.length === 0) {
+      return 'NONE';
+    }
+
+    const currentStudentEnrolment = enrolments.filter(
+      e => e.student.username === this.auth.getUserDetails().username
+    )[0];
+
+    if (currentStudentEnrolment) {
+      return currentStudentEnrolment.status;
+    }
+
+    return 'NONE';
   }
 }

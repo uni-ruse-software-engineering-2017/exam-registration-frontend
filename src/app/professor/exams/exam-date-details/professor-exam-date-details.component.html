@@ -53,18 +53,18 @@
             {{ e.student.facultyNumber }}, {{ e.student.specialty }} ({{ e.student.groupNumber }})
           </p>
           <div class="actions desktop">
-            <button class="approve" (click)="approveStudent(pr)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
+            <button class="approve" (click)="approveStudent(e)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <span translate>Approve</span>
             </button>
-            <button class="reject" (click)="openRejectStudentModal(pr)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
+            <button class="reject" (click)="openRejectStudentModal(e)" mat-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <span translate>Reject</span>
             </button>
           </div>
           <div class="actions mobile">
-            <button class="approve" (click)="approveStudent(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
+            <button class="approve" (click)="approveStudent(e)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <mat-icon matTooltip="{{ 'Approve' | translate }}">done</mat-icon>
             </button>
-            <button class="reject" (click)="openRejectStudentModal(pr)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
+            <button class="reject" (click)="openRejectStudentModal(e)" mat-icon-button *ngIf="exam.professor.username === professor.username && e.status === 'PENDING'">
               <mat-icon matTooltip="{{ 'Reject' | translate }}">close</mat-icon>
             </button>
           </div>

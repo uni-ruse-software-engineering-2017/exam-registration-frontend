@@ -62,4 +62,10 @@ export class ExamService {
       reason
     }) as Observable<IExamResponse>;
   }
+
+  getUpcoming() {
+    return this.http.get(`${API_URL}/exams/upcoming`) as Observable<
+      IExamResponse[]
+    >;
+  }
 }
