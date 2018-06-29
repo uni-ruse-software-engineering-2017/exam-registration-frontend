@@ -20,6 +20,7 @@ export class ProfessorExamDatesBySubjectComponent implements OnInit {
   subjectId: number;
   minDate = new Date();
   selectedDate = new Date();
+  canPublishExamForDate = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +47,12 @@ export class ProfessorExamDatesBySubjectComponent implements OnInit {
 
   onDateSelected(event) {
     this.selectedDate = event;
+
+    const threeDaysFromNow = this._addDays(new Date(), 3);
+
+    this.canPublishExamForDate =
+      this.selectedDate.getTime() >= threeDaysFromNow.getTime();
+
     this.getExams();
   }
 
@@ -78,5 +85,12 @@ export class ProfessorExamDatesBySubjectComponent implements OnInit {
         examsList => (this.exams = examsList),
         error => this.errorHandler.handle(error)
       );
+  }
+
+  private _addDays(date: Date, days: number) {
+    const _date = new Date(date.valueOf());
+    _date.setHours(0, 0, 0, 0);
+    _date.setDate(_date.getDate() + days);
+    return _date;
   }
 }

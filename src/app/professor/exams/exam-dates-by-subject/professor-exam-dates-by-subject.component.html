@@ -36,7 +36,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button color="primary" mat-button (click)="openAddExamModal()">
+    <button color="primary" mat-button (click)="openAddExamModal()" [disabled]="!canPublishExamForDate">
       <span translate>Add new exam date</span>
     </button>
   </mat-card-actions>

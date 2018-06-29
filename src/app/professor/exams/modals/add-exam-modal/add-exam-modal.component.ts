@@ -66,8 +66,8 @@ export class AddExamModalComponent implements OnInit {
 
   _toUnixTimestamp(timeString: string) {
     const dateString = this.dialogData.date
-      .toISOString()
-      .replace(/T.*/, 'T' + timeString);
+      .toString() // e.g. Tue Aug 19 1975 23:15:30 GMT+0200 (CEST)
+      .replace(/(\d{2}:\d{2}:\d{2})/, `${timeString}:00`); // replace the HH:mm:ss part
 
     return new Date(dateString).getTime();
   }

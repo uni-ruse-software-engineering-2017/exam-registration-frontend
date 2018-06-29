@@ -7,6 +7,16 @@ form > mat-form-field {
   display: block;
 }
 
+.row {
+  display: flex;
+  :first-child {
+    margin-right: 8px;
+  }
+  mat-form-field {
+    flex: 1;
+  }
+}
+
 .form-title {
   h2 {
     margin-bottom: 4px;
@@ -28,6 +38,10 @@ form > mat-form-field {
 @media only screen and (max-width: 480px) {
   mat-form-field {
     width: 280px;
+  }
+
+  .row {
+    display: block;
   }
 
   .actions {
