@@ -1,0 +1,49 @@
+@mixin responsive-table() {
+  .mobile-label {
+    display: none;
+  }
+
+  @media (max-width: $mobileBreakpoint) {
+    // Custom header label that shows in each column, with a set width and bold font
+    mat-cell:first-child {
+      padding: 0;
+    }
+
+    .mobile-label {
+      width: 120px;
+      display: inline-block;
+      font-weight: bold;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    .cell-value {
+      margin-left: 8px;
+      text-align: right;
+    }
+
+    .row-actions {
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    mat-row::after {
+      display: none;
+    }
+    // Remove the header row altogether
+    .mat-header-row {
+      display: none;
+    }
+
+    // The row cells should display as a column, justified left, with a bit of extra padding
+    .mat-row {
+      flex-direction: column;
+      align-items: start;
+      padding: 8px 24px;
+    }
+  }
+}

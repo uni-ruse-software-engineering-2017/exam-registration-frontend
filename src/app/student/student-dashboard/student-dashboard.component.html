@@ -30,14 +30,14 @@
       <ng-container matColumnDef="professor">
         <mat-header-cell *matHeaderCellDef translate>Professor</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Professor</span>
+          <span class="mobile-label" translate>Professor</span>
           <span class="cell-value">{{ row.professor }}</span>
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef translate>Status</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Status</span>
+          <span class="mobile-label" translate>Status</span>
           <span class="cell-value">
             <span class="enrolment-status" [ngClass]="row.status | lowercase" [ngSwitch]="row.status | lowercase">
               <span *ngSwitchCase="'pending'" translate>Pending</span>
