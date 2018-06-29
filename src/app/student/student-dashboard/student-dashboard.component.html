@@ -5,7 +5,8 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-table #table [dataSource]="upcomingExams">
+    <p *ngIf="upcomingExamsData.length === 0" translate>There are no upcoming exams yet</p>
+    <mat-table #table [dataSource]="upcomingExams" *ngIf="upcomingExamsData.length > 0">
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef translate>Date</mat-header-cell>
         <mat-cell *matCellDef="let row">

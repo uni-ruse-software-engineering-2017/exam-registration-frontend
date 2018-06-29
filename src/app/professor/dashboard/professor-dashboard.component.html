@@ -1,3 +1,55 @@
-<p>
-  professor-dashboard works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1 translate>Upcoming Exams</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p *ngIf="upcomingExamsData.length === 0" translate>There are no upcoming exams yet</p>
+    <mat-table #table [dataSource]="upcomingExams" *ngIf="upcomingExamsData.length > 0">
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef translate>Date</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label" translate>Date</span>
+          <span class="cell-value">{{ row.date | date: 'dd.MM.yyyy, hh:mm' }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="hall">
+        <mat-header-cell *matHeaderCellDef translate>Hall</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label" translate>Hall</span>
+          <span class="cell-value">{{ row.hall }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="subject">
+        <mat-header-cell *matHeaderCellDef translate>Subject</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label" translate>Subject</span>
+          <span class="cell-value">{{ row.subject.name }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="enrolments">
+          <mat-header-cell *matHeaderCellDef translate>Enrolled</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label" translate>Enrolled</span>
+            <span class="cell-value">{{ row.enrolledCount }}/{{ row.maxSeats }}</span>
+          </mat-cell>
+        </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row" class="row-actions">
+          <a [routerLink]="['exam-dates', row.subject.id, 'details', row.id]" mat-button color="primary">
+            <span translate>Details</span>
+          </a>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="upcomingExamsColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: upcomingExamsColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <a [routerLink]="['./exam-dates']" mat-button color="primary">
+      <span translate>View All</span>
+    </a>
+  </mat-card-actions>
+</mat-card>

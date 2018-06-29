@@ -1,0 +1,12 @@
+@import '~styles/responsive-table';
+
+@include responsive-table();
+
+.cdk-column-date,
+.cdk-column-subject {
+  flex: 2;
+}
+.cdk-column-enrolments,
+.cdk-column-hall {
+  flex: 1;
+}
