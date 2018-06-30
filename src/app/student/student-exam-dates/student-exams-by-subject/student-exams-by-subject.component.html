@@ -12,7 +12,7 @@
         </span>
         <h3 matLine>{{exam.professor.fullName}}</h3>
         <p class="mat-caption" matLine>
-          {{ exam.startTime | date : 'hh:mm' }},
+          {{ exam.startTime | date : 'HH:mm' }},
           {{ exam.hall }}
         </p>
         <span class="max-seats">{{ exam.enrolledStudents.length }} / {{ exam.maxSeats }}</span>

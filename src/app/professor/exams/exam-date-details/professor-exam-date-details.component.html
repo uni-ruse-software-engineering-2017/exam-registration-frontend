@@ -1,7 +1,7 @@
 <mat-card *ngIf="exam">
   <mat-card-header>
     <mat-card-title>{{ exam.subject.name }}</mat-card-title>
-    <mat-card-subtitle>{{ exam.startTime | date: 'dd.MM.yyyy' }}, {{ exam.startTime | date: 'hh:mm' }}  - {{ exam.endTime | date: 'hh:mm' }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ exam.startTime | date: 'dd.MM.yyyy' }}, {{ exam.startTime | date: 'HH:mm' }}  - {{ exam.endTime | date: 'HH:mm' }}</mat-card-subtitle>
     <button
       mat-icon-button
       matTooltip="{{ 'Cancel Exam' | translate }}"
