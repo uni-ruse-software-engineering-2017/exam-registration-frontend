@@ -37,7 +37,7 @@ export class ProfessorDashboardComponent implements OnInit {
               hall: e.hall,
               subject: e.subject,
               enrolledCount: e.enrolledStudents.filter(
-                es => es.status === 'ACCEPTED'
+                es => es.status === 'APPROVED'
               ).length,
               maxSeats: e.maxSeats
             } as IProfessorUpcomingExam)

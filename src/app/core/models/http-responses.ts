@@ -51,5 +51,5 @@ export interface IEnrollmentRequest {
 export type StudentEnrollmentStatus =
   | 'NONE'
   | 'PENDING'
-  | 'ACCEPTED'
+  | 'APPROVED'
   | 'REJECTED';
