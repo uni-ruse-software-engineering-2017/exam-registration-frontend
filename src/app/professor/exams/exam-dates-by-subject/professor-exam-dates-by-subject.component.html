@@ -10,6 +10,7 @@
         [selected]="selectedDate"
         (selectedChange)="onDateSelected($event)">
       </mat-calendar>
+      <h4 class="selected-date">{{ selectedDate | date }}</h4>
     </div>
     <div class="exams-container" *ngIf="exams.length > 0">
       <mat-list>

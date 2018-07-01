@@ -6,6 +6,13 @@ mat-card-content {
   mat-calendar {
     border: 1px solid rgba(0, 0, 0, 0.12);
   }
+
+  .selected-date {
+    font-weight: bold;
+    margin-top: 16px;
+    text-align: center;
+  }
+
   .calendar-container {
     flex: 3;
   }
