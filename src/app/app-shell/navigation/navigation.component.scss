@@ -1,11 +1,17 @@
+@import '~styles/vars';
+
 :host {
   width: 280px;
   display: block;
 }
 
+.mat-nav-list .mat-list-item.mat-list-item-focus,
+.mat-nav-list .mat-list-item:hover {
+  background-color: rgba($colorPrimary, 0.12);
+}
+
 nav > header {
-  background: #e8e8e8;
-  background: linear-gradient(to bottom, #e8e8e8 0%, #c9c9c9 100%);
+  @include hero-gradient(135deg);
   padding: 16px;
 }
 
@@ -22,7 +28,7 @@ nav > header .user-details {
 }
 
 .user-details__role {
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba($colorPrimary, 0.18);
   padding: 12px;
   border-radius: 50%;
   width: 60px;
@@ -51,4 +57,5 @@ a[mat-list-item] mat-icon {
 
 a[mat-list-item].active {
   font-weight: bold;
+  @include hero-gradient(45deg);
 }
