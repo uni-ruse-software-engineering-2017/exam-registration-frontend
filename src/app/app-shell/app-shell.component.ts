@@ -11,7 +11,6 @@ import {
 } from '@angular/core';
 import { MatDrawer } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoadingService } from '../core/loading.service';
@@ -34,7 +33,6 @@ export class AppShellComponent implements OnDestroy, AfterViewInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     public loading: LoadingService,
-    private translate: TranslateService,
     private router: Router
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 1024px)');
@@ -63,10 +61,6 @@ export class AppShellComponent implements OnDestroy, AfterViewInit {
 
   getDrawerMode() {
     return this.isMobile() ? 'over' : 'side';
-  }
-
-  setLanguage(lang: string) {
-    this.translate.use(lang);
   }
 
   shouldRenderDrawer() {

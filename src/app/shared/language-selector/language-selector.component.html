@@ -1,0 +1,13 @@
+<button mat-icon-button [matMenuTriggerFor]="langsMenu">
+  <mat-icon>translate</mat-icon>
+</button>
+<mat-menu #langsMenu>
+  <button mat-menu-item (click)="setLanguage('bg')">
+    <img src="./assets/images/bg.svg" alt="BG">
+    <span translate>Bulgarian</span>
+  </button>
+  <button mat-menu-item (click)="setLanguage('en')">
+    <img src="./assets/images/en.svg" alt="EN">
+    <span translate>English</span>
+  </button>
+</mat-menu>
