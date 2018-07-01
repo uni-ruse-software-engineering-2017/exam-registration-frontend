@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { INewProfessor, IProfessor } from '../../models/professor.model';
+import {
+  INewProfessor,
+  IProfessor,
+  IProfessorBase
+} from '../../models/professor.model';
 
 const API_URL = environment.API_URL;
 
@@ -25,5 +29,12 @@ export class ProfessorService {
     return this.http.post(`${API_URL}/professors`, professor) as Observable<
       IProfessor
     >;
+  }
+
+  update(professorId: number, professor: IProfessorBase) {
+    return this.http.patch(
+      `${API_URL}/professors/${professorId}`,
+      professor
+    ) as Observable<IProfessor>;
   }
 }

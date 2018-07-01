@@ -18,6 +18,7 @@ export class StudentGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.auth.userProfile$.pipe(
+      filter(profile => !!profile),
       map(profile => {
         const role = profile.role;
         const hasRole = role === 'STUDENT';

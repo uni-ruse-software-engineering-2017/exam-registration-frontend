@@ -10,11 +10,8 @@
         <p class="mat-caption" matLine>
           {{professor.username}}
         </p>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="openEditProfessorModal(professor)">
           <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
     </mat-list>

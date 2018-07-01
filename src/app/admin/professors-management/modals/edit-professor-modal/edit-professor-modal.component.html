@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 class="mat-title" translate>Edit Professor</h2>
+  <h3>{{ professor.username }}</h3>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Full Name' | translate }}"
+      formControlName="fullName"
+      required>
+    <mat-error *ngIf="form.controls['fullName'].errors?.required" translate>
+      The professor's name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Cabinet' | translate }}"
+      formControlName="cabinet">
+    <mat-error *ngIf="form.controls['cabinet'].errors?.required" translate>
+      The professor's cabinet is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'Phone Number' | translate }}"
+      formControlName="phoneNumber">
+    <mat-error *ngIf="form.controls['phoneNumber'].errors?.required" translate>
+      The professor's phone number is required
+    </mat-error>
+  </mat-form-field>
+  <div class="actions">
+    <button type="button" mat-button (click)="modalRef.close()">
+      <span translate>Cancel</span>
+    </button>
+    <button type="submit" mat-raised-button color="primary">
+      <span translate>Save</span>
+    </button>
+  </div>
+</form>

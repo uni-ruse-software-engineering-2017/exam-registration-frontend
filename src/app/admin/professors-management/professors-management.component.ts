@@ -5,6 +5,7 @@ import { HttpErrorHandlerService } from '../../core/http-error-handler.service';
 import { IProfessor } from '../../models/professor.model';
 import { ProfessorService } from '../services/professor.service';
 import { AddProfessorModalComponent } from './modals/add-professor-modal/add-professor-modal.component';
+import { EditProfessorModalComponent } from './modals/edit-professor-modal/edit-professor-modal.component';
 
 @Component({
   selector: 'ru-professors-management',
@@ -40,6 +41,19 @@ export class ProfessorsManagementComponent implements OnInit {
 
   openAddProfessorModal() {
     const modalRef = this.dialog.open(AddProfessorModalComponent);
+
+    return modalRef
+      .afterClosed()
+      .pipe(filter((result: boolean) => result))
+      .subscribe(() => {
+        this.getProfessors();
+      });
+  }
+
+  openEditProfessorModal(professor: IProfessor) {
+    const modalRef = this.dialog.open(EditProfessorModalComponent, {
+      data: professor
+    });
 
     return modalRef
       .afterClosed()
