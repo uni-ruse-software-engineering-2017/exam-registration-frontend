@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import {
@@ -28,7 +28,9 @@ export class AuthenticationService {
   private jwtDurationTimeout: any;
   private user: IUserProfile;
 
-  public userProfile$: ReplaySubject<IUserProfile> = new ReplaySubject();
+  public userProfile$: BehaviorSubject<IUserProfile> = new BehaviorSubject(
+    null
+  );
 
   constructor(
     private http: HttpClient,
