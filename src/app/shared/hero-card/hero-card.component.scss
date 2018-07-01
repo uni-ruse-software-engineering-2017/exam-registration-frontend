@@ -19,6 +19,14 @@
 .hero-card-content {
   padding: 16px 32px;
   flex: 1;
+
+  .hero-card-header {
+    display: flex;
+
+    ru-language-selector {
+      margin-left: 16px;
+    }
+  }
 }
 
 @media only screen and (max-width: 480px) {

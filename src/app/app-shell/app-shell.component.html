@@ -9,13 +9,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <h1 translate>Online Exam Registration System</h1>
-        <button mat-icon-button [matMenuTriggerFor]="langsMenu">
-          <mat-icon>translate</mat-icon>
-        </button>
-        <mat-menu #langsMenu>
-          <button mat-menu-item (click)="setLanguage('bg')" translate>Bulgarian</button>
-          <button mat-menu-item (click)="setLanguage('en')" translate>English</button>
-        </mat-menu>
+        <ru-language-selector></ru-language-selector>
       </mat-toolbar>
       <mat-progress-bar mode="indeterminate" [ngClass]="{ 'hidden': !loading.isLoading() }"></mat-progress-bar>
     </div>

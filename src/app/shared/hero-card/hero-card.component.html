@@ -4,8 +4,11 @@
   </div>
   <div class="hero-card-content">
     <header class="hero-card-header">
-      <h1 class="mat-headline">{{ title }}</h1>
-      <h2 class="mat-title">{{ subtitle }}</h2>
+      <div class="hero-card-title-group">
+        <h1 class="mat-headline">{{ title }}</h1>
+        <h2 class="mat-title">{{ subtitle }}</h2>
+      </div>
+      <ru-language-selector></ru-language-selector>
     </header>
     <section>
       <ng-content></ng-content>
