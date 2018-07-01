@@ -26,7 +26,7 @@ export class StudentDashboardComponent implements OnInit {
   ];
 
   upcomingExams: MatTableDataSource<IStudentUpcomingExam>;
-  upcomingExamsData: IStudentUpcomingExam[];
+  upcomingExamsData: IStudentUpcomingExam[] = [];
 
   constructor(
     private examService: ExamService,

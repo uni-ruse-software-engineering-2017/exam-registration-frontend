@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HomeComponent } from './home/home.component';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { MaterialComponentsModule } from './material-components.module';
 import { TimeInputComponent } from './time-input/time-input.component';
 
@@ -23,13 +24,15 @@ import { TimeInputComponent } from './time-input/time-input.component';
     HeroCardComponent,
     HomeComponent,
     ConfirmModalComponent,
-    TimeInputComponent
+    TimeInputComponent,
+    LanguageSelectorComponent
   ],
   declarations: [
     HeroCardComponent,
     HomeComponent,
     ConfirmModalComponent,
-    TimeInputComponent
+    TimeInputComponent,
+    LanguageSelectorComponent
   ],
   entryComponents: [ConfirmModalComponent]
 })
