@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import {
   IJwtUserData,
@@ -43,8 +43,13 @@ export class AuthenticationService {
     if (jwt) {
       this.authToken = jwt;
       const jwtPayload = this.parseJwt(jwt);
-      this.user = this.constructUserProfile(jwtPayload);
-      this.userProfile$.next(this.user);
+      this.getProfile().subscribe(
+        profile => {
+          this.userProfile$.next(profile);
+          this.user = profile;
+        },
+        error => this.logout()
+      );
 
       // set a timer which will log out the user when the JWT expires
       this.jwtDurationTimeout = setTimeout(
@@ -66,23 +71,31 @@ export class AuthenticationService {
         // parse the JWT payload
         const jwtPayload = this.parseJwt(this.authToken) as IJwtUserData;
 
-        // set the user profile data
-        this.user = this.constructUserProfile(jwtPayload);
-        this.userProfile$.next(this.user);
-
         // set a timer which will log out the user when the JWT expires
         this.jwtDurationTimeout = setTimeout(
           () => this.logout(),
           (jwtPayload.exp - jwtPayload.iat) * 1000
         );
+      }),
+      switchMap(() => this.getProfile()),
+      map(profile => {
+        this.userProfile$.next(profile);
+        this.user = profile;
 
-        return { token: this.authToken, profile: this.user };
+        return {
+          token: this.authToken,
+          profile
+        };
       })
     );
   }
 
   signUp(signUpData: IUserCredentials) {
     return this.http.post(`${API_URL}/sign-up`, signUpData);
+  }
+
+  getProfile() {
+    return this.http.get(`${API_URL}/profile`) as Observable<IUserProfile>;
   }
 
   logout() {
@@ -129,13 +142,5 @@ export class AuthenticationService {
 
   private parseJwt(jwt: string) {
     return this.jwtUtil.decodeToken() as IJwtUserData;
-  }
-
-  private constructUserProfile(jwtPayload: IJwtUserData): IUserProfile {
-    return {
-      fullName: jwtPayload.sub,
-      role: jwtPayload.role,
-      username: jwtPayload.sub
-    };
   }
 }

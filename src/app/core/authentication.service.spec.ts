@@ -146,10 +146,12 @@ describe('AuthenticationService', () => {
         }, fail);
       }, fail);
 
-      const req = httpTestingController.expectOne(`${API_URL}/login`);
-      expect(req.request.method === 'POST');
+      const loginReq = httpTestingController.expectOne(`${API_URL}/login`);
+      expect(loginReq.request.method === 'POST');
+      const profileReq = httpTestingController.expectOne(`${API_URL}/profile`);
+      expect(loginReq.request.method === 'GET');
 
-      req.flush({
+      loginReq.flush({
         token: TEST_JWT
       });
     })

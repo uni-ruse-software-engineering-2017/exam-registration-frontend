@@ -17,14 +17,18 @@ export class StudentGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const role = this.auth.getUserDetails().role;
-    const hasRole = role === 'STUDENT';
+    return this.auth.userProfile$.pipe(
+      map(profile => {
+        const role = profile.role;
+        const hasRole = role === 'STUDENT';
 
-    if (hasRole) {
-      return true;
-    } else {
-      this.router.navigate([this.auth.getBaseRouteForUser(role)]);
-      return false;
-    }
+        if (hasRole) {
+          return true;
+        } else {
+          this.router.navigate([this.auth.getBaseRouteForUser(role)]);
+          return false;
+        }
+      })
+    );
   }
 }

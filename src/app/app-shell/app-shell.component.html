@@ -1,9 +1,9 @@
 <mat-drawer-container>
-  <mat-drawer #drawer [mode]="getDrawerMode()" [opened]="shouldRenderDrawer()" class="mat-elevation-z8">
+  <mat-drawer #drawer [mode]="drawerMode" [opened]="shouldRenderDrawer" class="mat-elevation-z8">
     <ru-navigation (logoutClicked)="onLogoutClicked()" [userDetails]="userProfile"></ru-navigation>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="toolbar" [ngClass]="{ 'hidden': shouldHideToolbar() }">
+    <div class="toolbar" [ngClass]="{ 'hidden': shouldHideToolbar }">
       <mat-toolbar class="mat-elevation-z4">
         <button mat-icon-button (click)="drawer.toggle()" *ngIf="isMobile()">
           <mat-icon>menu</mat-icon>
@@ -11,9 +11,9 @@
         <h1 translate>Online Exam Registration System</h1>
         <ru-language-selector></ru-language-selector>
       </mat-toolbar>
-      <mat-progress-bar mode="indeterminate" [ngClass]="{ 'hidden': !loading.isLoading() }"></mat-progress-bar>
+      <mat-progress-bar mode="indeterminate" [ngClass]="{ 'hidden': !isLoading }"></mat-progress-bar>
     </div>
-    <section class="content" [ngClass]="{ 'no-session': shouldHideToolbar() }">
+    <section class="content" [ngClass]="{ 'no-session': shouldHideToolbar }">
       <div class="route-wrapper">
         <router-outlet></router-outlet>
       </div>

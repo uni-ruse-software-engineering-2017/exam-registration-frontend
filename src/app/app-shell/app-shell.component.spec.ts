@@ -60,7 +60,7 @@ describe('AppShellComponent', () => {
       fixture.detectChanges();
       tick();
 
-      expect(component.shouldHideToolbar()).toBeTruthy();
+      expect(component.shouldHideToolbar).toBeTruthy();
     })
   );
 
@@ -71,7 +71,7 @@ describe('AppShellComponent', () => {
       fixture.detectChanges();
       tick();
 
-      expect(component.shouldHideToolbar()).toBeFalsy();
+      expect(component.shouldHideToolbar).toBeFalsy();
     })
   );
 

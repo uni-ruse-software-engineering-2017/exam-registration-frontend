@@ -1,3 +1,5 @@
+import { ISubject } from './professor.model';
+
 export interface IUserCredentials {
   username: string;
   password: string;
@@ -6,9 +8,14 @@ export interface IUserCredentials {
 export type UserRole = 'STUDENT' | 'PROFESSOR' | 'ADMIN';
 
 export interface IUserProfile {
+  id: number;
   username: string;
   fullName: string;
   role: UserRole;
+  active: boolean;
+  cabinet?: string;
+  phoneNumber?: string;
+  subjectsTeaching?: ISubject[];
 }
 
 export interface IJwtUserData {

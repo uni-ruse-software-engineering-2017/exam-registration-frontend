@@ -8,7 +8,7 @@
         <mat-icon *ngSwitchCase="'ADMIN'" matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
       </div>
       <div class="user-details__username">
-        {{ userDetails?.username }}
+        {{ userDetails?.fullName || userDetails?.username }}
       </div>
     </div>
   </header>

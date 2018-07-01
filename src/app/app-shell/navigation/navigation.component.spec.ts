@@ -52,7 +52,7 @@ describe('NavigationComponent', () => {
         '.user-details__username'
       );
       expect((usernameElement.textContent as string).trim()).toEqual(
-        FAKE_USER.username
+        FAKE_USER.fullName
       );
     })
   );
