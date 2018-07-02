@@ -1,13 +1,13 @@
 import { UserRole } from './../models/authentication-models';
 
-export interface INewProfessor extends IProfessorBase {
-  username: string;
-}
-
 export interface IProfessorBase {
   fullName: string;
   cabinet: string;
   phoneNumber: string;
+}
+
+export interface INewProfessor extends IProfessorBase {
+  username: string;
 }
 
 export interface IProfessor extends INewProfessor {

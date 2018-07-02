@@ -1,0 +1,30 @@
+mat-form-field {
+  width: 100%;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.assignment-form--wrapper {
+  display: flex;
+  align-items: center;
+}
+
+section {
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+.professors-list,
+.assignment-form {
+  padding-top: 16px;
+}
+
+h4 {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+button[type='submit'] {
+  min-width: 120px;
+}

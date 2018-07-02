@@ -36,4 +36,18 @@ export class SubjectService {
   remove(subjectId: number) {
     return this.http.delete(`${API_URL}/subjects/${subjectId}`);
   }
+
+  addAssignee(subjectId: number, username: string) {
+    return this.http.patch(`${API_URL}/subjects/${subjectId}/assignees`, {
+      added: [username],
+      removed: []
+    }) as Observable<ISubject>;
+  }
+
+  removeAssignee(subjectId: number, username: string) {
+    return this.http.patch(`${API_URL}/subjects/${subjectId}/assignees`, {
+      removed: [username],
+      added: []
+    }) as Observable<ISubject>;
+  }
 }

@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ subject?.name }}</mat-card-title>
+    <mat-card-subtitle translate>Assign subjects to professors</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <section class="professors-list">
+      <h4 translate>Professors assigned to this subject</h4>
+      <mat-list>
+        <mat-list-item *ngFor="let professor of professors">
+          <h3 matLine>{{professor.fullName}}</h3>
+          <p class="mat-caption" matLine>
+            {{professor.username}}
+          </p>
+          <button mat-icon-button matTooltip="{{ 'Remove' | translate }}" (click)="unassign(professor.username)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+      <p *ngIf="professors.length === 0" translate>There are no professor assigned to this subject yet</p>
+    </section>
+    <mat-divider></mat-divider>
+    <section class="assignment-form">
+      <h4 translate>Assign new professor to this subject</h4>
+      <form [formGroup]="form" (ngSubmit)="assign()" class="assignment-form--wrapper">
+        <mat-form-field>
+          <mat-select placeholder="{{ 'Professor' }}" formControlName="professorToAssign" required>
+            <mat-option *ngFor="let item of professorsDropDown" [value]="item.value">
+              {{item.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">
+          <span translate>Assign</span>
+        </button>
+      </form>
+    </section>
+  </mat-card-content>
+</mat-card>
+

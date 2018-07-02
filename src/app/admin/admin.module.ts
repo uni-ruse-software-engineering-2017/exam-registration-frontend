@@ -8,6 +8,7 @@ import { EditProfessorModalComponent } from './professors-management/modals/edit
 import { ProfessorsManagementComponent } from './professors-management/professors-management.component';
 import { ProfessorService } from './services/professor.service';
 import { AddSubjectModalComponent } from './subjects-management/modals/add-subject-modal/add-subject-modal.component';
+import { ProfessorAssignmentComponent } from './subjects-management/professor-assignment/professor-assignment.component';
 import { SubjectsManagementComponent } from './subjects-management/subjects-management.component';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SubjectsManagementComponent } from './subjects-management/subjects-mana
     SubjectsManagementComponent,
     AddSubjectModalComponent,
     AddProfessorModalComponent,
-    EditProfessorModalComponent
+    EditProfessorModalComponent,
+    ProfessorAssignmentComponent
   ],
   providers: [ProfessorService],
   entryComponents: [
