@@ -11,7 +11,7 @@
 }
 
 nav > header {
-  @include hero-gradient(135deg);
+  @include hero-gradient();
   padding: 16px;
 }
 
@@ -22,27 +22,25 @@ nav > header > img {
 
 nav > header .user-details {
   margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
 }
 
 .user-details__role {
-  background-color: rgba($colorPrimary, 0.18);
+  opacity: 0.72;
   padding: 12px;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 8px;
+  text-align: center;
 }
 
 .user-details__role mat-icon {
-  font-size: 36px;
-  width: 36px;
-  height: 36px;
+  $size: 18px;
+  font-size: $size;
+  width: $size;
+  height: $size;
+  margin-right: 8px;
 }
 
 .user-details__username {
+  flex: 1;
   font-size: 1.125em;
   text-align: center;
 }
@@ -57,5 +55,5 @@ a[mat-list-item] mat-icon {
 
 a[mat-list-item].active {
   font-weight: bold;
-  @include hero-gradient(45deg);
+  @include hero-gradient();
 }

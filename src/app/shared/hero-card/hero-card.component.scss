@@ -9,7 +9,7 @@
 .hero-card-image {
   padding: 32px 64px;
 
-  @include hero-gradient(45deg);
+  @include hero-gradient();
   display: flex;
   align-items: center;
 }

@@ -5,11 +5,11 @@ $colorStatusRejected: indianred;
 $colorStatusPending: #ea8100;
 $colorPrimary: #fcfe04;
 
-@mixin hero-gradient($degs: 45deg) {
-  background: rgba($colorPrimary, 0.15);
+@mixin hero-gradient() {
+  background: rgba($colorPrimary, 0.22);
   background: linear-gradient(
-    $degs,
-    rgba($colorPrimary, 0.12) 0%,
-    rgba($colorPrimary, 0.33) 100%
+    to right,
+    rgba($colorPrimary, 0.22) 0%,
+    rgba($colorPrimary, 0.53) 100%
   );
 }

@@ -2,16 +2,12 @@
   <header>
     <img src="./assets/ru-logo.png" alt="{{ 'RU Angel Kanchev' | translate }}">
     <div class="user-details">
-      <div class="user-details__role" [ngSwitch]="userDetails?.role" *ngIf="userDetails">
-        <mat-icon  *ngSwitchCase="'PROFESSOR'" matTooltip="{{ 'Professor' | translate }}">account_circle</mat-icon>
-        <mat-icon *ngSwitchCase="'STUDENT'" matTooltip="{{ 'Student' | translate }}">school</mat-icon>
-        <mat-icon *ngSwitchCase="'ADMIN'" matTooltip="{{ 'Administrator' | translate }}">build</mat-icon>
-      </div>
       <div class="user-details__username">
         {{ userDetails?.fullName || userDetails?.username }}
       </div>
     </div>
   </header>
+  <mat-divider></mat-divider>
   <mat-nav-list>
     <a mat-list-item [routerLink]="'student'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" *ngIf="isStudent()">
       <mat-icon>dashboard</mat-icon>
