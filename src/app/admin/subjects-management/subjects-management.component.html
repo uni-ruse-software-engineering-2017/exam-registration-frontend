@@ -10,6 +10,9 @@
         <p class="mat-caption" matLine>
           {{subject.description}}
         </p>
+        <button mat-icon-button (click)="openEditSubjectModal(subject)" matTooltip="{{ 'Edit' | translate }}">
+          <mat-icon>edit</mat-icon>
+        </button>
         <a mat-icon-button [routerLink]="[subject.id, 'assignment']" matTooltip="{{ 'Assign subjects to professors' | translate }}">
           <mat-icon>people</mat-icon>
         </a>

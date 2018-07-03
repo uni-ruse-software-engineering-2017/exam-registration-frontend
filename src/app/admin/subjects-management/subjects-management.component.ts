@@ -53,7 +53,16 @@ export class SubjectsManagementComponent implements OnInit {
   }
 
   openEditSubjectModal(subject: ISubject) {
-    // TODO: implement editing
+    const modalRef = this.dialog.open(AddSubjectModalComponent, {
+      data: subject
+    });
+
+    return modalRef
+      .afterClosed()
+      .pipe(filter((result: boolean) => result))
+      .subscribe(() => {
+        this.getSubjects();
+      });
   }
 
   openDeleteSubjectModal(subject: ISubject) {

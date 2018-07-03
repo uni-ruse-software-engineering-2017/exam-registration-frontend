@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpErrorHandlerService } from '../../../../core/http-error-handler.service';
 import { SubjectService } from '../../../../core/services/subject.service';
@@ -16,6 +17,7 @@ export class AddSubjectModalComponent implements OnInit {
   form: FormGroup;
   constructor(
     public modalRef: MatDialogRef<AddSubjectModalComponent>,
+    @Inject(MAT_DIALOG_DATA) private subject: ISubject,
     private fb: FormBuilder,
     private http: HttpClient,
     private snackbar: MatSnackBar,
@@ -26,8 +28,8 @@ export class AddSubjectModalComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      description: ['']
+      name: [this.subject ? this.subject.name : '', [Validators.required]],
+      description: [this.subject ? this.subject.description : '']
     });
   }
 
@@ -38,11 +40,22 @@ export class AddSubjectModalComponent implements OnInit {
 
     const formData = this.form.value as ISubject;
 
-    return this.subjectService.create(formData).subscribe(
-      () => {
-        this.modalRef.close(true);
-      },
-      error => this.errorHandler.handle(error)
-    );
+    // if we are editing, we should send a PATCH request,
+    // otherwise we should create a new record
+    if (this.subject) {
+      return this.subjectService.update(this.subject.id, formData).subscribe(
+        () => {
+          this.modalRef.close(true);
+        },
+        error => this.errorHandler.handle(error)
+      );
+    } else {
+      return this.subjectService.create(formData).subscribe(
+        () => {
+          this.modalRef.close(true);
+        },
+        error => this.errorHandler.handle(error)
+      );
+    }
   }
 }
