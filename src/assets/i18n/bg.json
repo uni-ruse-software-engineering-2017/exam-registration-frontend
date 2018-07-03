@@ -97,6 +97,7 @@
 	"You don't have the required permissions": "Нямате необходимите права, за да извършите действието",
 	"You must enter a password": "Трябва да въведете парола",
 	"You must provide a reason for the rejection": "Трябва да попълните причина за отказа.",
+	"You must provide a valid phone number": "Трябва да въведете валиден телефонен номер.",
 	"You must repeat your password": "Трябва да повторите паролата си",
 	"Your password is not long enough": "Паролата трябва да е дълга поне {{ minlength }} символа"
 }

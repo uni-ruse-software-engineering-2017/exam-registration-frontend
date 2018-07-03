@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { HttpErrorHandlerService } from '../../../../core/http-error-handler.service';
+import { PhoneNumberValidator } from '../../../../core/validators/phone-number.validator';
 import {
   INewProfessor,
   IProfessor,
@@ -29,8 +30,14 @@ export class EditProfessorModalComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       fullName: [this.professor.fullName, Validators.required],
-      cabinet: [this.professor.cabinet, Validators.required],
-      phoneNumber: [this.professor.phoneNumber, Validators.required]
+      cabinet: [
+        this.professor.cabinet,
+        [Validators.required, Validators.maxLength(10)]
+      ],
+      phoneNumber: [
+        this.professor.phoneNumber,
+        [Validators.required, PhoneNumberValidator]
+      ]
     });
   }
 

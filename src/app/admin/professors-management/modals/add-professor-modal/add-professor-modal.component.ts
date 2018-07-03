@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { HttpErrorHandlerService } from '../../../../core/http-error-handler.service';
+import { PhoneNumberValidator } from '../../../../core/validators/phone-number.validator';
 import { INewProfessor } from '../../../../models/professor.model';
 import { ProfessorService } from '../../../services/professor.service';
 
@@ -24,8 +25,8 @@ export class AddProfessorModalComponent implements OnInit {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
       fullName: ['', Validators.required],
-      cabinet: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
+      cabinet: ['', [Validators.required, Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.required, PhoneNumberValidator]]
     });
   }
 

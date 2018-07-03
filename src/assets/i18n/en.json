@@ -97,6 +97,7 @@
 	"You don't have the required permissions": "You don't have the required permissions",
 	"You must enter a password": "You must enter a password",
 	"You must provide a reason for the rejection": "You must provide a reason for the rejection.",
+	"You must provide a valid phone number": "You must provide a valid phone number",
 	"You must repeat your password": "You must repeat your password",
 	"Your password is not long enough": "Your password must be at least {{ minlength }} symbols"
 }
