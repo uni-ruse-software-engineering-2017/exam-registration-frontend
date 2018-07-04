@@ -40,6 +40,8 @@ export interface IExamResponse {
   createdOn: Date;
   modifiedOn: Date;
   enrollmentStatus?: StudentEnrollmentStatus;
+  canEnroll?: boolean;
+  approvedCount?: number;
 }
 
 export interface IEnrollmentRequest {

@@ -15,8 +15,8 @@
           {{ exam.startTime | date : 'HH:mm' }},
           {{ exam.hall }}
         </p>
-        <span class="max-seats">{{ exam.enrolledStudents.length }} / {{ exam.maxSeats }}</span>
-        <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'">
+        <span class="max-seats">{{ exam.approvedCount }} / {{ exam.maxSeats }}</span>
+        <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'" [disabled]="!exam.canEnroll">
           <span translate>Enroll</span>
         </button>
         <button color="warn" mat-raised-button (click)="cancelEnrollment(exam)" *ngIf="exam.enrollmentStatus !== 'NONE'">

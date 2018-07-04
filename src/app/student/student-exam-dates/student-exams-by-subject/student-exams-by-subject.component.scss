@@ -41,6 +41,10 @@ mat-list-item:not(:last-of-type) {
     background-color: lightslategray;
   }
 
+  .mat-raised-button {
+    min-width: 120px;
+  }
+
   @media only screen and (max-width: 480px) {
     width: 32px;
     height: 32px;

@@ -61,6 +61,12 @@ export class StudentExamsBySubjectComponent implements OnInit {
           exam.enrollmentStatus = this.enrollmentService.getEnrollmentStatus(
             exam
           );
+
+          exam.approvedCount = exam.enrolledStudents.filter(
+            e => e.status === 'APPROVED'
+          ).length;
+
+          exam.canEnroll = exam.approvedCount < exam.maxSeats;
           return exam;
         })
       )
