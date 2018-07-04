@@ -1,3 +1,5 @@
+@import '~styles/vars';
+
 mat-drawer-content {
   height: 100vh;
 }
@@ -15,8 +17,12 @@ mat-drawer-content {
   transform: translateY(-64px);
 }
 
-mat-toolbar h1 {
-  flex: 1;
+mat-toolbar {
+  @include hero-gradient-toolbar(to left);
+
+  h1 {
+    flex: 1;
+  }
 }
 
 mat-progress-bar.hidden {

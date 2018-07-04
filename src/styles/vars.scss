@@ -4,12 +4,23 @@ $colorStatusApproved: rgb(76, 175, 80);
 $colorStatusRejected: rgb(244, 67, 54);
 $colorStatusPending: rgb(255, 152, 0);
 $colorPrimary: #fcfe04;
+$colorGradientStart: #fbfbc4;
+$colorGradientEnd: #feff7a;
 
-@mixin hero-gradient() {
+@mixin hero-gradient($direction: to right) {
   background: rgba($colorPrimary, 0.22);
   background: linear-gradient(
-    to right,
+    $direction,
     rgba($colorPrimary, 0.22) 0%,
     rgba($colorPrimary, 0.53) 100%
+  );
+}
+
+@mixin hero-gradient-toolbar($direction: to right) {
+  background: $colorGradientEnd;
+  background: linear-gradient(
+    $direction,
+    $colorGradientStart 0%,
+    $colorGradientEnd 100%
   );
 }

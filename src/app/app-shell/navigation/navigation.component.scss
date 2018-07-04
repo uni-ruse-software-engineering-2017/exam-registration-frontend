@@ -3,15 +3,17 @@
 :host {
   width: 280px;
   display: block;
+  height: 100%;
+  @include hero-gradient();
 }
 
 .mat-nav-list .mat-list-item.mat-list-item-focus,
 .mat-nav-list .mat-list-item:hover {
-  background-color: rgba($colorPrimary, 0.12);
+  background-color: rgba($colorPrimary, 0.25);
+  @include hero-gradient();
 }
 
 nav > header {
-  @include hero-gradient();
   padding: 16px;
 }
 

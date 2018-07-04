@@ -25,10 +25,6 @@
       <mat-icon>event_note</mat-icon>
       <span translate>Exam Dates</span>
     </a>
-    <a mat-list-item [routerLink]="'professor/archive'" [routerLinkActive]="'active'" *ngIf="isProfessor()">
-      <mat-icon>archive</mat-icon>
-      <span translate>Archive</span>
-    </a>
     <a mat-list-item [routerLink]="'administration/professors'" [routerLinkActive]="'active'" *ngIf="isAdmin()">
       <mat-icon>people</mat-icon>
       <span translate>Professors Management</span>
