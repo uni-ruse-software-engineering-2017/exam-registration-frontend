@@ -1,3 +1,5 @@
+@import '~styles/vars';
+
 mat-list-item:not(:last-of-type) {
   margin-bottom: 16px;
 }
@@ -6,11 +8,19 @@ mat-list-item:not(:last-of-type) {
   min-width: 72px;
 }
 
+section:not(:last-of-type) {
+  margin-bottom: 21px;
+}
+
+p.mat-caption {
+  color: rgba(0, 0, 0, 0.72);
+}
+
 [matListIcon].mat-list-icon {
   color: white;
   background-color: lightgray;
-  width: 72px;
-  height: 72px;
+  width: 36px;
+  height: 36px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -18,27 +28,23 @@ mat-list-item:not(:last-of-type) {
   justify-content: center;
 
   .date-icon__date {
-    font-size: 21px;
-  }
-
-  .date-icon__year {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   &.approved {
-    background-color: lightgreen;
+    background-color: $colorStatusApproved;
   }
 
   &.pending {
-    background-color: lightsalmon;
+    background-color: $colorStatusPending;
   }
 
   &.rejected {
-    background-color: orangered;
+    background-color: $colorStatusRejected;
   }
 
   &.none {
-    background-color: lightslategray;
+    background-color: #4fc1e9;
   }
 
   .mat-raised-button {
@@ -51,8 +57,25 @@ mat-list-item:not(:last-of-type) {
     .date-icon__date {
       font-size: 14px;
     }
-    .date-icon__year {
-      display: none;
-    }
+  }
+}
+
+.mat-list .mat-list-item .mat-list-item-content {
+  padding: 0 !important; /* try to use !important if doesn't work */
+}
+
+button {
+  min-width: inherit;
+}
+
+@media only screen and (max-width: 480px) {
+  button {
+    padding: 8px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  h3[matline].mat-line {
+    white-space: normal;
   }
 }

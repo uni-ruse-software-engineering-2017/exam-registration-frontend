@@ -4,27 +4,29 @@
     <mat-card-subtitle>{{ subject?.description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-list *ngIf="exams.length">
-      <mat-list-item *ngFor="let exam of exams; trackBy exam?.id">
-        <span class="date-icon" [ngClass]="exam.enrollmentStatus | lowercase" matListIcon>
-          <span class="date-icon__date">{{ exam.startTime | date : 'dd.MM' }}</span>
-          <span class="date-icon__year">{{ exam.startTime | date : 'yyyy' }}</span>
-        </span>
-        <h3 matLine>{{exam.professor.fullName}}</h3>
-        <p class="mat-caption" matLine>
-          {{ exam.startTime | date : 'HH:mm' }},
-          {{ exam.hall }}
-        </p>
-        <span class="max-seats">{{ exam.approvedCount }} / {{ exam.maxSeats }}</span>
-        <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'" [disabled]="!exam.canEnroll">
-          <span translate>Enroll</span>
-        </button>
-        <button color="warn" mat-raised-button (click)="cancelEnrollment(exam)" *ngIf="exam.enrollmentStatus !== 'NONE'">
-          <span translate>Cancel</span>
-        </button>
-      </mat-list-item>
-    </mat-list>
-    <p *ngIf="exams.length === 0" translate>
+    <section *ngFor="let month of examsByMonth">
+      <h3>{{ month.month | date: 'MMMM yyyy'}}</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let exam of month.exams; trackBy exam?.id">
+          <span class="date-icon" [ngClass]="exam.enrollmentStatus | lowercase" matListIcon>
+            <span class="date-icon__date">{{ exam.startTime | date : 'dd' }}</span>
+          </span>
+          <h3 matLine>{{exam.professor.fullName}}</h3>
+          <p class="mat-caption" matLine>
+            {{ exam.startTime | date : 'HH:mm' }} - {{ exam.endTime | date : 'HH:mm' }},
+            {{ exam.hall }}
+          </p>
+          <span class="max-seats desktop-only">{{ exam.approvedCount }} / {{ exam.maxSeats }}</span>
+          <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'" [disabled]="!exam.canEnroll">
+            <span translate>Enroll</span>
+          </button>
+          <button color="warn" mat-raised-button (click)="cancelEnrollment(exam)" *ngIf="exam.enrollmentStatus !== 'NONE'">
+            <span translate>Cancel</span>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </section>
+    <p *ngIf="examsByMonth.length === 0" translate>
       There are no upcoming exam dates published for this subject
     </p>
   </mat-card-content>

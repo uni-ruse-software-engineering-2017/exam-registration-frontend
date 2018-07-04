@@ -1,8 +1,8 @@
 $mobileBreakpoint: 720px;
 
-$colorStatusApproved: #15db00;
-$colorStatusRejected: indianred;
-$colorStatusPending: #ea8100;
+$colorStatusApproved: rgb(76, 175, 80);
+$colorStatusRejected: rgb(244, 67, 54);
+$colorStatusPending: rgb(255, 152, 0);
 $colorPrimary: #fcfe04;
 
 @mixin hero-gradient() {

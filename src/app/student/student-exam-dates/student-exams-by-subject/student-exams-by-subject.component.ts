@@ -18,6 +18,7 @@ import { EnrollmentService } from '../../services/enrollment.service';
 export class StudentExamsBySubjectComponent implements OnInit {
   subject: ISubject;
   exams: IExamResponse[] = [];
+  examsByMonth: Array<{ month: Date; exams: IExamResponse[] }> = [];
   subjectId: number;
 
   constructor(
@@ -47,7 +48,7 @@ export class StudentExamsBySubjectComponent implements OnInit {
       )
       .subscribe(
         ([exams, subject]) => {
-          this.exams = exams;
+          this.examsByMonth = exams;
           this.subject = subject;
         },
         error => this.errorHandler.handle(error)
@@ -56,8 +57,9 @@ export class StudentExamsBySubjectComponent implements OnInit {
 
   getExams(subjectId: number) {
     return this.examService.getAll({ subjectId: this.subjectId }).pipe(
-      map(exams =>
-        exams.map(exam => {
+      map(exams => {
+        // adds calculated values to the exams
+        const examsList = exams.map(exam => {
           exam.enrollmentStatus = this.enrollmentService.getEnrollmentStatus(
             exam
           );
@@ -68,15 +70,19 @@ export class StudentExamsBySubjectComponent implements OnInit {
 
           exam.canEnroll = exam.approvedCount < exam.maxSeats;
           return exam;
-        })
-      )
+        });
+
+        return this._groupExamsByMonth(examsList);
+      })
     );
   }
 
   enroll(exam: IExamResponse) {
     return this.enrollmentService.enroll(exam.id).subscribe(
       () => {
-        this.getExams(this.subjectId).subscribe(exams => (this.exams = exams));
+        this.getExams(this.subjectId).subscribe(
+          exams => (this.examsByMonth = exams)
+        );
       },
       error => this.errorHandler.handle(error)
     );
@@ -85,9 +91,46 @@ export class StudentExamsBySubjectComponent implements OnInit {
   cancelEnrollment(exam: IExamResponse) {
     return this.enrollmentService.cancelEnrollment(exam.id).subscribe(
       () => {
-        this.getExams(this.subjectId).subscribe(exams => (this.exams = exams));
+        this.getExams(this.subjectId).subscribe(
+          exams => (this.examsByMonth = exams)
+        );
       },
       error => this.errorHandler.handle(error)
     );
+  }
+
+  /**
+   * Groups upcoming exams by month and year.
+   *
+   * @param exams - exams list
+   */
+  private _groupExamsByMonth(exams: IExamResponse[]) {
+    const months = Array.from(
+      new Set(
+        exams.map(x => {
+          const asDate = new Date(x.startTime);
+          const year = asDate.getFullYear();
+          const month = asDate.getMonth() + 1;
+          return `${year}-${month >= 10 ? month : '0' + month}`;
+        })
+      )
+    );
+
+    const groupedByMonths = months.map(month => ({
+      month: this._monthStringToDate(month),
+      exams: exams.filter(e => e.startTime.toString().indexOf(month) === 0)
+    }));
+
+    return groupedByMonths;
+  }
+
+  /**
+   * Converts a year-month string (e.g. 2019-6) to a date: 1st June, 2019
+   *
+   * @param s - year-month string
+   */
+  private _monthStringToDate(s: string) {
+    const [year, month] = s.split('-').map(x => parseInt(x, 10));
+    return new Date(year, month, 1, 0, 0, 0, 0);
   }
 }
