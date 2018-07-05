@@ -131,6 +131,7 @@ export class StudentExamsBySubjectComponent implements OnInit {
    */
   private _monthStringToDate(s: string) {
     const [year, month] = s.split('-').map(x => parseInt(x, 10));
-    return new Date(year, month, 1, 0, 0, 0, 0);
+
+    return new Date(year, month - 1, 1, 0, 0, 0, 0);
   }
 }

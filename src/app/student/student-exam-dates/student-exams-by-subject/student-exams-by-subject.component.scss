@@ -1,11 +1,11 @@
 @import '~styles/vars';
 
-mat-list-item:not(:last-of-type) {
-  margin-bottom: 16px;
-}
-
 .max-seats {
   min-width: 72px;
+}
+
+mat-card-content {
+  margin-top: 16px;
 }
 
 section:not(:last-of-type) {

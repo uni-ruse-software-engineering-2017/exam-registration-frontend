@@ -25,7 +25,7 @@
       <h4 translate>Assign new professor to this subject</h4>
       <form [formGroup]="form" (ngSubmit)="assign()" class="assignment-form--wrapper">
         <mat-form-field>
-          <mat-select placeholder="{{ 'Professor' }}" formControlName="professorToAssign" required>
+          <mat-select placeholder="{{ 'Professor' | translate }}" formControlName="professorToAssign" required>
             <mat-option *ngFor="let item of professorsDropDown" [value]="item.value">
               {{item.label}}
             </mat-option>
