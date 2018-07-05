@@ -56,7 +56,7 @@ const materialModules = [
   providers: [
     {
       provide: MAT_DATE_LOCALE,
-      useValue: 'bg-Bg'
+      useValue: 'bg'
     },
     {
       provide: DateAdapter,

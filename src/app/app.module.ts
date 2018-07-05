@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -21,9 +21,15 @@ import { LoadingService } from './core/loading.service';
 import { PublicModule } from './public/public.module';
 import { SharedModule } from './shared/shared.module';
 
+import { registerLocaleData } from '@angular/common';
+import localeBg from '@angular/common/locales/bg';
+
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeBg, 'bg');
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +52,8 @@ export function tokenGetter() {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    LoadingService
+    LoadingService,
+    { provide: LOCALE_ID, useValue: 'bg' }
   ],
   bootstrap: [AppComponent]
 })
