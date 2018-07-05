@@ -9,7 +9,7 @@
 
 .mat-nav-list .mat-list-item.mat-list-item-focus,
 .mat-nav-list .mat-list-item:hover {
-  background-color: rgba($colorPrimary, 0.33);
+  background-color: rgba($colorPrimary, 0.43);
 }
 
 nav > header {
@@ -26,24 +26,16 @@ nav > header .user-details {
   display: block;
 }
 
-.user-details__role {
-  opacity: 0.72;
-  padding: 12px;
-  text-align: center;
-}
-
-.user-details__role mat-icon {
-  $size: 18px;
-  font-size: $size;
-  width: $size;
-  height: $size;
-  margin-right: 8px;
-}
-
-.user-details__username {
-  flex: 1;
+.user-details__name {
   font-size: 1.125em;
   text-align: center;
+}
+
+.user-details__email {
+  font-size: 0.825em;
+  text-align: center;
+  margin-top: 4px;
+  color: rgba(0, 0, 0, 0.76);
 }
 
 mat-nav-list {

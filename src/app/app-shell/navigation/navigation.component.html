@@ -2,8 +2,11 @@
   <header>
     <img src="./assets/ru-logo.png" alt="{{ 'RU Angel Kanchev' | translate }}">
     <div class="user-details">
-      <div class="user-details__username">
-        {{ userDetails?.fullName || userDetails?.username }}
+      <div class="user-details__name">
+        {{ userDetails?.fullName }}
+      </div>
+      <div class="user-details__email">
+        {{ userDetails?.username }}
       </div>
     </div>
   </header>
