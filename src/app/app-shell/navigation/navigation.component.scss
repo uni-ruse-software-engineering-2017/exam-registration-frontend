@@ -9,8 +9,7 @@
 
 .mat-nav-list .mat-list-item.mat-list-item-focus,
 .mat-nav-list .mat-list-item:hover {
-  background-color: rgba($colorPrimary, 0.25);
-  @include hero-gradient();
+  background-color: rgba($colorPrimary, 0.33);
 }
 
 nav > header {
@@ -57,5 +56,5 @@ a[mat-list-item] mat-icon {
 
 a[mat-list-item].active {
   font-weight: bold;
-  @include hero-gradient();
+  background-color: rgba($colorPrimary, 0.25);
 }

@@ -3,16 +3,16 @@ $mobileBreakpoint: 720px;
 $colorStatusApproved: rgb(76, 175, 80);
 $colorStatusRejected: rgb(244, 67, 54);
 $colorStatusPending: rgb(255, 152, 0);
-$colorPrimary: #fcfe04;
-$colorGradientStart: #fbfbc4;
-$colorGradientEnd: #feff7a;
+$colorPrimary: #3f51b5;
+$colorGradientStart: #d3deff;
+$colorGradientEnd: #e2e2e2;
 
 @mixin hero-gradient($direction: to right) {
-  background: rgba($colorPrimary, 0.22);
+  background: $colorGradientEnd;
   background: linear-gradient(
     $direction,
-    rgba($colorPrimary, 0.22) 0%,
-    rgba($colorPrimary, 0.53) 100%
+    $colorGradientStart,
+    $colorGradientEnd
   );
 }
 
