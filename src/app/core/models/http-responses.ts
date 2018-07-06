@@ -40,8 +40,9 @@ export interface IExamResponse {
   createdOn: Date;
   modifiedOn: Date;
   enrollmentStatus?: StudentEnrollmentStatus;
-  canEnroll?: boolean;
-  approvedCount?: number;
+  approvedCount: number;
+  canStudentsEnrol: boolean;
+  canStudentsUnenrol: boolean;
 }
 
 export interface IEnrollmentRequest {
@@ -54,4 +55,5 @@ export type StudentEnrollmentStatus =
   | 'NONE'
   | 'PENDING'
   | 'APPROVED'
-  | 'REJECTED';
+  | 'REJECTED'
+  | 'LOCKED';

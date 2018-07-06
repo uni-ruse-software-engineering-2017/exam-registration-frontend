@@ -17,10 +17,20 @@
             {{ exam.hall }}
           </p>
           <span class="max-seats desktop-only">{{ exam.approvedCount }} / {{ exam.maxSeats }}</span>
-          <button color="primary" mat-raised-button (click)="enroll(exam)" *ngIf="exam.enrollmentStatus === 'NONE'" [disabled]="!exam.canEnroll">
+          <button
+            color="primary"
+            mat-raised-button
+            (click)="enroll(exam)"
+            *ngIf="exam.enrollmentStatus === 'NONE' || exam.enrollmentStatus === 'LOCKED'"
+            [disabled]="!exam.canStudentsEnrol">
             <span translate>Enroll</span>
           </button>
-          <button color="warn" mat-raised-button (click)="cancelEnrollment(exam)" *ngIf="exam.enrollmentStatus !== 'NONE'">
+          <button
+            color="warn"
+            mat-raised-button
+            (click)="cancelEnrollment(exam)"
+            *ngIf="exam.enrollmentStatus !== 'NONE' && exam.enrollmentStatus !== 'LOCKED'"
+            [disabled]="!exam.canStudentsUnenrol">
             <span translate>Cancel</span>
           </button>
         </mat-list-item>

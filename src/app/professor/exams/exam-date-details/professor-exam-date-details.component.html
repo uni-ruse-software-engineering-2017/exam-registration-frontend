@@ -46,7 +46,7 @@
     <section class="enrolled-students">
       <h2>
         <span translate>Enrolled Students</span>
-        <span>({{ exam.enrolledStudents.length }}/{{ exam.maxSeats }})</span>
+        <span>({{ exam.approvedCount }}/{{ exam.maxSeats }})</span>
       </h2>
       <mat-list *ngIf="exam.enrolledStudents.length > 0">
         <mat-list-item *ngFor="let e of exam.enrolledStudents">

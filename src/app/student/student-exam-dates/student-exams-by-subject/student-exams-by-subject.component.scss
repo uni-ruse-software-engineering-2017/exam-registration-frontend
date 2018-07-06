@@ -47,6 +47,10 @@ p.mat-caption {
     background-color: #4fc1e9;
   }
 
+  &.locked {
+    background-color: #999;
+  }
+
   .mat-raised-button {
     min-width: 120px;
   }

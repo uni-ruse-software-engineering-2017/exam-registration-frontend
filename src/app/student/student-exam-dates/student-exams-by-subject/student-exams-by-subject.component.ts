@@ -64,11 +64,6 @@ export class StudentExamsBySubjectComponent implements OnInit {
             exam
           );
 
-          exam.approvedCount = exam.enrolledStudents.filter(
-            e => e.status === 'APPROVED'
-          ).length;
-
-          exam.canEnroll = exam.approvedCount < exam.maxSeats;
           return exam;
         });
 

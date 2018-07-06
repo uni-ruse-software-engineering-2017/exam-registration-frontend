@@ -41,7 +41,7 @@ export class EnrollmentService {
     if (currentStudentEnrollment) {
       return currentStudentEnrollment.status;
     } else {
-      return 'NONE';
+      return exam.canStudentsEnrol ? 'NONE' : 'LOCKED';
     }
   }
 }
